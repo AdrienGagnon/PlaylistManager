@@ -1,0 +1,36 @@
+.playlistitem {
+    font-size: 1.6rem;
+    text-overflow: ellipsis;
+    list-style: none;
+}
+
+.playlistitem h2 {
+    font-size: 2rem;
+    text-align: left;
+    margin-block: 1rem;
+}
+
+.img-playlist-list {
+    width: 100px;
+}
+
+.playlists-container {
+    display: flex;
+    overflow-x: hidden;
+
+    scroll-behavior: smooth;
+
+    --grid-gap: 24px;
+    --column-count: 10;
+    --min-container-width: 366px;
+
+    grid-gap: var(--grid-gap);
+    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+    min-width: var(--min-container-width);
+}
+
+.RecommendedPlaylists {
+}
+
+.UserPlaylists {
+}

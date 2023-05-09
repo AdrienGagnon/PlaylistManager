@@ -9,9 +9,15 @@
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: var(--color-font);
+
+    border: red solid 1px;
 }
 
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+}
+
+body {
+    background-color: black;
 }

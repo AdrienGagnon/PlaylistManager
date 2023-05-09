@@ -1,0 +1,6 @@
+nav {
+    --left-sidebar-width: 303px;
+    grid-area: left-sidebar;
+
+    width: var(--left-sidebar-width);
+}
