@@ -1,0 +1,17 @@
+:root {
+    --color-font: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: var(--color-font);
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
