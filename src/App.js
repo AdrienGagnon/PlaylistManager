@@ -6,10 +6,10 @@ import CallBack from './authentication/Callback';
 
 import MainContent from './pages/MainContent/MainContent';
 
-import LoggedOutNav from './pages/Navigation/LoggedOutNav';
+import Nav from './pages/Navigation/Nav';
 import MainView from './pages/MainView/MainView';
 import HeaderMainView from './pages/Header/HeaderMainView';
-import LoggedInNav from './pages/Navigation/LoggedInNav';
+import LoggingIn from './pages/LoggingIn/LoggingIn';
 import NowPlayingBar from './pages/NowPlayingBar/NowPlayingBar';
 
 const router = createBrowserRouter([
@@ -19,23 +19,19 @@ const router = createBrowserRouter([
     },
     {
         path: '/',
+        element: <LoggingIn />,
+    },
+    {
+        path: '/',
 
         element: <MainContent />,
         children: [
-            {
-                path: '/',
-                element: (
-                    <>
-                        <LoggedOutNav />
-                    </>
-                ),
-            },
             {
                 path: '/Home',
                 element: (
                     <>
                         <HeaderMainView />
-                        <LoggedInNav />
+                        <Nav />
                         <MainView />
                         <NowPlayingBar />
                     </>
@@ -45,7 +41,7 @@ const router = createBrowserRouter([
                 path: '/search',
                 element: (
                     <>
-                        <LoggedInNav />
+                        <Nav />
                         <MainView />
                         <NowPlayingBar />
                     </>

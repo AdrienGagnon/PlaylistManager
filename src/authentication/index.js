@@ -1,4 +1,4 @@
-import { ClientID, REDIRECTURI } from '../Constants';
+import { ClientID, REDIRECTURI } from '../pages/Constants/Constants';
 
 function authentication() {
     //----- Code Verifier -----//

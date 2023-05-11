@@ -1,4 +1,4 @@
-import { REDIRECTURI, ClientID } from '../Constants';
+import { REDIRECTURI, ClientID } from '../pages/Constants/Constants';
 
 async function setToken() {
     // Parse the URL and save the code parameter
