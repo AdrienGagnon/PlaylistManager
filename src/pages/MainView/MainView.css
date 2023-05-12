@@ -8,3 +8,7 @@
     grid-area: main-view;
     padding-inline: 1rem;
 }
+
+.main-view ul {
+    max-width: 100%;
+}

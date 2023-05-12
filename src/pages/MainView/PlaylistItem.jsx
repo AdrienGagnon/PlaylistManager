@@ -3,7 +3,10 @@ import './PlaylistItem.css';
 function PlaylistItem(props) {
     return (
         <li className={[props.playlist, 'playlistitem'].join(' ')}>
-            <h2>{props.title}</h2>
+            <div>
+                <h2>{props.title}</h2>
+                <p>Tout afficher</p>
+            </div>
             {props.children}
         </li>
     );

@@ -1,3 +1,5 @@
+@import url('../Constants/Constants.css');
+
 .main-content {
     --panel-gap: 8px;
 
@@ -13,6 +15,12 @@
     min-height: 100%;
     width: 100%;
     grid-auto-flow: column;
+    padding: var(--panel-gap);
 
     align-self: stretch;
+}
+
+.main-content nav,
+.main-content > div {
+    background-color: var(--background-base);
 }

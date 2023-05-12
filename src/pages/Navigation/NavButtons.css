@@ -1,0 +1,65 @@
+@import url('../Constants/Constants.css');
+
+.navItems {
+    list-style: none;
+    padding: 2rem;
+}
+
+.navItems li {
+    padding: 8px 12px;
+}
+
+.navItems li * {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+}
+
+.linkPage {
+    display: flex;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition-duration: 300ms;
+    align-items: center;
+}
+
+.linkPage span {
+    margin-left: 1rem;
+    color: inherit;
+    font-weight: 700;
+}
+
+.linkPage.active {
+    color: white;
+}
+
+.linkPage.active svg {
+    fill: white;
+}
+
+.linkPage:hover {
+    color: white;
+}
+
+.linkPage:hover svg {
+    fill: white;
+}
+
+.linkPage svg {
+    z-index: 2;
+    fill: rgb(var(--SPOTIFY_LIGHT_GREY));
+}
+
+.home-active-icon,
+.search-active-icon {
+    display: none;
+}
+
+.active .home-active-icon,
+.active .search-active-icon {
+    display: flex;
+}
+
+.active .home-icon,
+.active .search-icon {
+    display: none;
+}

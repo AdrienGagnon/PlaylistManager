@@ -4,9 +4,8 @@ import { useOutletContext } from 'react-router-dom';
 import './MainView.css';
 
 import fetchWebApi from '../Data/fetchWebApi';
-import UserPlaylists from './UserPlaylists';
 import PlaylistItem from './PlaylistItem';
-import RecommendedPlaylists from './RecommendedPlaylists';
+import PlaylistContent from './PlaylistContent';
 
 function MainView() {
     const [profileInfo, setProfileInfo] = useState([]);
@@ -31,13 +30,19 @@ function MainView() {
                     playlist={'UserPlaylists'}
                     title={'Vos listes de lecture'}
                 >
-                    <UserPlaylists accessToken={accessToken} />
+                    <PlaylistContent
+                        accessToken={accessToken}
+                        type={'v1/me/playlists'}
+                    />
                 </PlaylistItem>
                 <PlaylistItem
                     playlist={'RecommendedPlaylists'}
                     title={'Listes de lecture recommandées'}
                 >
-                    <RecommendedPlaylists />
+                    <PlaylistContent
+                        accessToken={accessToken}
+                        type={'v1/browse/featured-playlists'}
+                    />
                 </PlaylistItem>
             </ul>
         </div>

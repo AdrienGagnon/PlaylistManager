@@ -1,0 +1,22 @@
+@import url('../Constants/Constants.css');
+
+.filters-container {
+    display: flex;
+    justify-content: flex-start;
+    padding: 2rem;
+}
+
+.filter {
+    background: rgb(var(--background-card));
+    border: none;
+    margin-left: 1rem;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border-radius: 1.6rem;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.filter:hover {
+    background: rgb(var(--background-card-hover));
+}

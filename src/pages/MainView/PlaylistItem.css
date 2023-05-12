@@ -1,36 +1,34 @@
+@import url('../Constants/Constants.css');
+
 .playlistitem {
     font-size: 1.6rem;
     text-overflow: ellipsis;
     list-style: none;
 }
 
+.playlistitem > div {
+    display: flex;
+    align-items: center;
+}
+
 .playlistitem h2 {
     font-size: 2rem;
     text-align: left;
     margin-block: 1rem;
+    flex-grow: 1;
 }
 
-.img-playlist-list {
-    width: 100px;
+.playlistitem > div p {
+    margin-left: 0.5rem;
 }
 
-.playlists-container {
-    display: flex;
-    overflow-x: hidden;
-
-    scroll-behavior: smooth;
-
-    --grid-gap: 24px;
-    --column-count: 10;
-    --min-container-width: 366px;
-
-    grid-gap: var(--grid-gap);
-    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
-    min-width: var(--min-container-width);
+.playlistitem h2,
+.playlistitem > div p {
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-.RecommendedPlaylists {
-}
-
-.UserPlaylists {
+.playlistitem h2:hover,
+.playlistitem > div p:hover {
+    text-decoration: underline;
 }

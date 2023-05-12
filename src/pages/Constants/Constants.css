@@ -5,4 +5,8 @@
     --SPOTIFY_GREY: 83, 83, 83;
     --SPOTIFY_LIGHT_GREY: 179, 179, 179;
     --SPOTIFY_WHITE: 255, 255, 255;
+
+    --background-base: 18, 18, 18;
+    --background-card: 24, 24, 24;
+    --background-card-hover: 40, 40, 40;
 }

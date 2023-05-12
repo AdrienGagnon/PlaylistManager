@@ -5,6 +5,13 @@
     --color-card-hover: hsla(0, 0%, 100%, 0.2);
 }
 
+#root:has(#parallax) {
+    min-height: 100vh;
+}
+
+#root {
+}
+
 .container {
     display: flex;
     position: relative;

@@ -1,5 +1,5 @@
 nav {
-    --left-sidebar-width: 303px;
+    --left-sidebar-width: 400px;
     grid-area: left-sidebar;
 
     width: var(--left-sidebar-width);
