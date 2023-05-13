@@ -10,8 +10,11 @@ function NavFilter() {
     return (
         <div className={styles['filters-container']}>
             {filters.map(filter => {
-                console.log(filter.class);
-                return <button className={styles.filter}>{filter.name}</button>;
+                return (
+                    <button key={filter.name} className={styles.filter}>
+                        {filter.name}
+                    </button>
+                );
             })}
         </div>
     );

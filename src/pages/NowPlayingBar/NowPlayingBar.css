@@ -1,3 +1,12 @@
 .now-playing-bar {
+    display: flex;
     grid-area: now-playing-bar;
+    flex-direction: row;
+    margin: 1rem 2rem;
+}
+
+.now-playing-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }

@@ -1,0 +1,46 @@
+@import url('../Constants/Constants.css');
+
+header {
+    display: flex;
+    height: fit-content;
+    z-index: 1;
+    margin-top: 1rem;
+    align-items: center;
+    gap: 1rem;
+    margin-inline: 1rem;
+}
+
+.arrows-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.arrows-container button,
+.install-link,
+.profil-icon {
+    background: rgb(var(--background-base));
+    border-radius: 2rem;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.download-container {
+    margin-left: auto;
+}
+
+.download-container a {
+    text-decoration: none;
+}
+
+.install-link {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.install-link span {
+    display: flex;
+    align-items: center;
+}

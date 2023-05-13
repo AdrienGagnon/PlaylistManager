@@ -1,0 +1,21 @@
+.info-current-track {
+    margin-left: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.control-current-track {
+    justify-content: center;
+}
+
+.other-controls {
+    justify-content: end;
+    margin-right: 0;
+}
+
+.info-current-track,
+.control-current-track,
+.other-controls {
+    display: flex;
+    width: 100%;
+}

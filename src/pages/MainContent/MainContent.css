@@ -22,5 +22,6 @@
 
 .main-content nav,
 .main-content > div {
-    background-color: var(--background-base);
+    background-color: rgb(var(--background-base));
+    border-radius: 1rem;
 }

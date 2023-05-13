@@ -1,12 +1,32 @@
+@import url('../Constants/Constants.css');
+
 .welcome-message {
     text-align: left;
-    margin-block: 5rem 2rem;
+    margin-block: 7rem 2rem;
     font-size: 3rem;
 }
 
 .main-view {
     grid-area: main-view;
     padding-inline: 1rem;
+    position: relative;
+    isolation: isolate;
+}
+
+.main-view:before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        rgba(88, 88, 88, 0.9),
+        rgb(var(--background-base)) 50%
+    );
+    z-index: -1;
+    border-radius: 1rem;
 }
 
 .main-view ul {

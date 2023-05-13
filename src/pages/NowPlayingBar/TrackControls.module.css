@@ -1,0 +1,45 @@
+@import url('../Constants/Constants.css');
+
+.buttons-container {
+    display: flex;
+}
+
+.buttons-container button {
+    margin-inline: 1rem;
+    align-items: center;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.shuffle-button {
+}
+
+.back-button {
+}
+
+.pause-button,
+.play-button {
+    width: 16px;
+    height: 16px;
+    fill: rgb(var(--background-body));
+}
+
+button[aria-label='Pause'] {
+    background-color: white;
+    border-radius: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.play-button path {
+}
+
+.next-button {
+}
+
+.loop-button {
+}

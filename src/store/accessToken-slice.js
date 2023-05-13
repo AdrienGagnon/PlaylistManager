@@ -9,7 +9,7 @@ const accessTokenSlice = createSlice({
     initialState: initialAccessToken,
     reducers: {
         updateToken(state, action) {
-            state.accessToken = action.payload;
+            state.accessToken = action.payload.accessToken;
         },
     },
 });

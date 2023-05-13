@@ -1,13 +1,23 @@
 import './NowPlayingBar.css';
+import styles from './NowPlayingBar.module.css';
+
+import CurrentTrack from './CurrentTrack';
+import TrackControls from './TrackControls';
+import OtherControls from './OtherControls';
 
 function NowPlayingBar() {
     return (
-        <div className="now-playing-bar">
-            salut playing Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Eveniet ab eius mollitia facere possimus dolore modi doloribus
-            qui, inventore temporibus illo consequuntur natus, quasi nobis alias
-            eum debitis fugit dolorem.
-        </div>
+        <footer className="now-playing-bar">
+            <div className={styles['info-current-track']}>
+                <CurrentTrack />
+            </div>
+            <div className={styles['control-current-track']}>
+                <TrackControls />
+            </div>
+            <div className={styles['other-controls']}>
+                <OtherControls />
+            </div>
+        </footer>
     );
 }
 

@@ -72,7 +72,7 @@ function NavBiblio() {
                         aria-hidden="true"
                         viewBox="0 0 16 16"
                         data-encore-id="icon"
-                        class="Svg-sc-ytk21e-0 ldgdZj"
+                        className="Svg-sc-ytk21e-0 ldgdZj"
                     >
                         <path d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75z"></path>
                     </svg>
@@ -90,7 +90,7 @@ function NavBiblio() {
                         aria-hidden="true"
                         viewBox="0 0 16 16"
                         data-encore-id="icon"
-                        class="Svg-sc-ytk21e-0 ldgdZj"
+                        className="Svg-sc-ytk21e-0 ldgdZj"
                     >
                         <path d="M1 1h6v6H1V1zm1.5 1.5v3h3v-3h-3zM1 9h6v6H1V9zm1.5 1.5v3h3v-3h-3zM9 1h6v6H9V1zm1.5 1.5v3h3v-3h-3zM9 9h6v6H9V9zm1.5 1.5v3h3v-3h-3z"></path>
                     </svg>
@@ -101,7 +101,7 @@ function NavBiblio() {
                         aria-hidden="true"
                         viewBox="0 0 16 16"
                         data-encore-id="icon"
-                        class="Svg-sc-ytk21e-0 eNWijz"
+                        className="Svg-sc-ytk21e-0 eNWijz"
                     >
                         <path d="M15 14.5H5V13h10v1.5zm0-5.75H5v-1.5h10v1.5zM15 3H5V1.5h10V3zM3 3H1V1.5h2V3zm0 11.5H1V13h2v1.5zm0-5.75H1v-1.5h2v1.5z"></path>
                     </svg>
@@ -119,7 +119,7 @@ function NavBiblio() {
                         aria-hidden="true"
                         viewBox="0 0 16 16"
                         data-encore-id="icon"
-                        class="Svg-sc-ytk21e-0 eNWijz"
+                        className="Svg-sc-ytk21e-0 eNWijz"
                     >
                         <path d="M8.81 1A.749.749 0 0 0 7.53.47L0 7.99l7.53 7.521a.75.75 0 0 0 1.234-.815.75.75 0 0 0-.174-.243L2.87 8.74h12.38a.75.75 0 1 0 0-1.498H2.87l5.72-5.713c.14-.14.22-.331.22-.53z"></path>
                     </svg>
@@ -130,7 +130,7 @@ function NavBiblio() {
                         aria-hidden="true"
                         viewBox="0 0 16 16"
                         data-encore-id="icon"
-                        class="Svg-sc-ytk21e-0 eNWijz"
+                        className="Svg-sc-ytk21e-0 eNWijz"
                     >
                         <path d="M7.19 1A.749.749 0 0 1 8.47.47L16 7.99l-7.53 7.521a.75.75 0 0 1-1.234-.815.75.75 0 0 1 .174-.243l5.72-5.714H.75a.75.75 0 1 1 0-1.498h12.38L7.41 1.529a.749.749 0 0 1-.22-.53z"></path>
                     </svg>
