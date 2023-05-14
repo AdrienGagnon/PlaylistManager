@@ -1,3 +1,5 @@
+import styles from './OtherControls.module.css';
+
 function OtherControls() {
     return (
         <>
@@ -45,7 +47,7 @@ function OtherControls() {
                     <path d="M13 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
                 </svg>
             </button>
-            <div>
+            <div className={styles['sound-bar-container']}>
                 <button
                     className="volume-bar__icon-button control-button"
                     aria-label="Désactiver le son"

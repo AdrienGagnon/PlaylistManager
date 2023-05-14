@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import styles from './TrackControls.module.css';
 
 import { useSelector } from 'react-redux';
 
 import handleNowPlayingButton from '../Logic/handleNowPlayingButton';
-import SoundIFrame from '../Sound/SoundIFrame';
+
+import ProgressBar from './ProgressBar';
+
+import handleNextTrack from '../Logic/handleNextTrack';
 
 function TrackControls() {
     const playState = useSelector(state => {
@@ -13,7 +15,6 @@ function TrackControls() {
 
     return (
         <>
-            <SoundIFrame />
             <div className={styles['buttons-container']}>
                 <div className={styles['left-buttons']}>
                     <button
@@ -89,6 +90,7 @@ function TrackControls() {
                 </button>
                 <div className={styles['right-buttons']}>
                     <button
+                        onClick={handleNextTrack}
                         className={styles['next-button']}
                         aria-label="Suivant"
                         data-testid="control-button-skip-forward"
@@ -126,7 +128,7 @@ function TrackControls() {
                     </button>
                 </div>
             </div>
-            <div className={styles['track-progress']}></div>
+            <ProgressBar />
         </>
     );
 }

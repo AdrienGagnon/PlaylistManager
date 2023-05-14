@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { accessTokenActions } from '../../store/accessToken-slice';
 
+import SoundIFrame from '../Sound/SoundIFrame';
+
 import './MainContent.css';
 
 function MainContent() {
@@ -28,6 +30,7 @@ function MainContent() {
 
     return (
         <div className="main-content">
+            <SoundIFrame />
             <Outlet context={[accessToken, setAccessToken]} />
         </div>
     );

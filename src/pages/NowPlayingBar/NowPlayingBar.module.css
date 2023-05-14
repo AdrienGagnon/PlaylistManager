@@ -2,15 +2,19 @@
     margin-left: 0;
     flex-direction: row;
     justify-content: flex-start;
+    gap: 1rem;
 }
 
 .control-current-track {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .other-controls {
     justify-content: end;
     margin-right: 0;
+    gap: 1rem;
 }
 
 .info-current-track,

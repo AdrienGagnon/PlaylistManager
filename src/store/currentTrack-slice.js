@@ -5,6 +5,8 @@ const initialCurrentTrack = {
     currentPlaylistTracks: undefined,
     currentTrack: undefined,
     playState: false,
+    trackTime: 0,
+    trackPosition: 0,
 };
 
 const currentTrackSlice = createSlice({
@@ -22,6 +24,7 @@ const currentTrackSlice = createSlice({
         newCurrentTrack(state, action) {
             state.currentTrack =
                 action.payload.track.items[action.payload.trackPosition];
+            state.trackPosition = action.payload.trackPosition;
         },
 
         playCurrentTrack(state) {
@@ -30,6 +33,10 @@ const currentTrackSlice = createSlice({
 
         stopCurrentTrack(state) {
             state.playState = false;
+        },
+
+        trackTime(state, action) {
+            state.trackTime = action.payload;
         },
     },
 });

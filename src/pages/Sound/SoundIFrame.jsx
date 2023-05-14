@@ -1,63 +1,93 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-
-// https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player
 
 import styles from './SoundIFrame.module.css';
 
+import { useDispatch } from 'react-redux';
+
+import { currentTrackActions } from '../../store/currentTrack-slice';
+
 function SoundIFrame() {
-    // const accessToken = useSelector(state => {
-    //     return state.accessToken;
-    // });
-    const [accessToken, setAccessToken] = useState();
+    const placeholder = useRef();
+    const dispatch = useDispatch();
 
-    const localaccessToken = localStorage.getItem('access_token');
+    const setTrackTime = time => {
+        dispatch(currentTrackActions.trackTime(time));
+    };
 
-    useEffect(() => {
-        setAccessToken(localaccessToken);
-    }, []);
-
-    const [player, setPlayer] = useState(undefined);
     const currentTrackInfo = useSelector(state => {
         return state.currentTrack;
     });
-    console.log(
-        currentTrackInfo,
-        'current',
-        currentTrackInfo.currentTrack?.track.uri
-    );
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://sdk.scdn.co/spotify-player.js';
-        script.async = true;
+        window.onSpotifyIframeApiReady = IFrameAPI => {
+            const element = document.getElementById('embed-iframe');
+            const options = {
+                uri: 'spotify:episode:7makk4oTQel546B0PZlDM5',
+            };
 
-        document.body.appendChild(script);
+            const callback = EmbedController => {
+                const callback = () => {
+                    if (!placeholder.current.dataset.spotifyId) return;
+                    EmbedController.loadUri(
+                        placeholder.current.dataset.spotifyId
+                    );
+                    EmbedController.addListener('playback_update', e => {
+                        setTrackTime(parseInt(e.data.position / 1000, 10));
+                    });
+                };
 
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const player = new window.Spotify.Player({
-                name: 'Web Playback SDK',
-                getOAuthToken: cb => {
-                    cb(localaccessToken);
-                },
-                volume: 0.5,
-            });
+                const config = {
+                    attributes: true,
+                };
 
-            setPlayer(player);
+                const observer = new MutationObserver(callback);
+                observer.observe(placeholder.current, config);
 
-            player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-            });
+                const callbackPlayState = () => {
+                    if (!placeholder.current.dataset.spotifyId) return;
 
-            player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
+                    if (
+                        placeholder.current.children[0].dataset
+                            .spotifyPlaystate === 'true'
+                    ) {
+                        EmbedController.resume();
+                    } else {
+                        EmbedController.pause();
+                    }
+                };
 
-            player.connect();
+                const observerPlayState = new MutationObserver(
+                    callbackPlayState
+                );
+
+                observerPlayState.observe(
+                    placeholder.current.children[0],
+                    config
+                );
+            };
+
+            IFrameAPI.createController(element, options, callback);
         };
-    }, [currentTrackInfo.currentTrack]);
+    }, []);
 
-    return <div id={styles['embed-iframe']}></div>;
+    return (
+        <div>
+            <div id="embed-iframe"></div>
+            <script
+                src="https://open.spotify.com/embed-podcast/iframe-api/v1"
+                async
+            ></script>
+            <div
+                ref={placeholder}
+                className={styles.placeholder}
+                data-spotify-id={currentTrackInfo.currentTrack?.track.uri}
+                // data-spotify-playstate={currentTrackInfo.playState}
+            >
+                <div data-spotify-playstate={currentTrackInfo.playState}></div>
+            </div>
+        </div>
+    );
 }
 
 export default SoundIFrame;
