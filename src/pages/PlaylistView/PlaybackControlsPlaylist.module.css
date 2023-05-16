@@ -1,0 +1,41 @@
+@import url('../Constants/Constants.css');
+
+.play-btn-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2.4rem;
+}
+
+.play-button {
+    background: rgb(var(--SPOTIFY_GREEN));
+    border: none;
+    border-radius: 100%;
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button:hover {
+    transition-duration: 150ms;
+    scale: 1.05;
+}
+
+.play-button svg {
+    fill: black;
+}
+
+.more-options-btn {
+    background: none;
+    border: none;
+}
+
+.more-options-btn svg {
+    fill: rgb(var(--SPOTIFY_LIGHT_GREY));
+}
+
+.more-options-btn:hover svg {
+    fill: white;
+}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 
 import './MainView.css';
 
@@ -9,7 +8,12 @@ import PlaylistContent from './PlaylistContent';
 
 function MainView() {
     const [profileInfo, setProfileInfo] = useState([]);
-    const [accessToken, setAccessToken] = useOutletContext();
+    const [accessToken, setAccessToken] = useState();
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('access_token');
+        setAccessToken(accessToken);
+    }, []);
 
     // When token is in state, get data
     useEffect(() => {

@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { NavLink } from 'react-router-dom';
+
 import fetchWebApi from '../Data/fetchWebApi';
 
 import handleResumeTrack from '../Logic/handleResumeTrack';
 
-import handleToNewView from '../Logic/handleToNewView';
+import handleSetPageContent from '../Logic/handleSetPageContent';
 
 import styles from './PlaylistContent.module.css';
 
@@ -24,9 +26,8 @@ function PlaylistContent(props) {
 
     useEffect(() => {
         resizePLaylists();
-        window.addEventListener('resize', () => {
-            resizePLaylists();
-        });
+        window.addEventListener('resize', resizePLaylists);
+        return () => window.removeEventListener('resize', resizePLaylists);
     }, []);
 
     // TODO: Resize needs rework to take changes to layout in account
@@ -47,16 +48,15 @@ function PlaylistContent(props) {
             return <div>Vous n'avez pas encore de liste de lecture.</div>;
         return playlistContent?.items.map(item => {
             return (
-                <div
-                    onClick={() => {
-                        handleToNewView(item, 'playlist');
-                    }}
+                <NavLink
+                    onClick={() => handleSetPageContent(item)}
+                    to={'/playlist'}
                     key={item.name}
                     className={styles['card']}
                 >
                     {ImageMiniPlaylist(item)}
                     <p>{item.name}</p>
-                </div>
+                </NavLink>
             );
         });
     }
@@ -75,6 +75,7 @@ function PlaylistContent(props) {
                     data-encore-id="buttonPrimary"
                     className={styles['play-button']}
                     onClick={e => {
+                        e.preventDefault();
                         e.stopPropagation();
                         handleResumeTrack(item);
                     }}
@@ -114,16 +115,15 @@ function PlaylistContent(props) {
         if (!playlistContent) return <div>Chargement...</div>;
         return playlistContent?.playlists.items.map(item => {
             return (
-                <div
-                    onClick={() => {
-                        handleToNewView(item, 'playlist');
-                    }}
+                <NavLink
+                    onClick={() => handleSetPageContent(item)}
+                    to={'/playlist'}
                     key={item.name}
                     className={styles['card']}
                 >
                     {ImageMiniPlaylist(item)}
                     <p>{item.name}</p>
-                </div>
+                </NavLink>
             );
         });
     }

@@ -12,6 +12,7 @@ const playlistPlaybackOrderSlice = createSlice({
         toggleShuffle(state) {
             state.shuffle = !state.shuffle;
         },
+
         toggleLoop(state) {
             state.loop = !state.loop;
         },

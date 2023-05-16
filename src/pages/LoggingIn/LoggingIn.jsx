@@ -28,7 +28,7 @@ const LoggindIn = () => {
             parallaxContainer.current.children
         );
         let lastMove = 0;
-        document.addEventListener('mousemove', e => {
+        /* document.addEventListener('mousemove', e => {
             if (Date.now() - lastMove < 100) return;
             arr.forEach(element => {
                 const speed = element.getAttribute('data-speed');
@@ -47,7 +47,7 @@ const LoggindIn = () => {
             arr.forEach(element => {
                 element.style = `translate: 0px 0px`;
             });
-        });
+        }); */
     }
 
     return (

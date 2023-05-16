@@ -10,4 +10,5 @@
 .sound-container {
     position: absolute;
     opacity: 0;
+    z-index: -100;
 }

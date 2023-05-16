@@ -1,11 +1,10 @@
-async function fetchWebApi(endpoint, method, body = undefined) {
+async function fetchWebApi(endpoint, method, offset = '') {
     const accessToken = localStorage.getItem('access_token');
-    const res = await fetch(`https://api.spotify.com/${endpoint}`, {
+    const res = await fetch(`https://api.spotify.com/${endpoint}${offset}`, {
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
         method,
-        body,
     });
     return await res.json();
 }

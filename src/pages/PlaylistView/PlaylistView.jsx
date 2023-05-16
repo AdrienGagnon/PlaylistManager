@@ -1,93 +1,49 @@
 import styles from './PlaylistView.module.css';
 
-import { useSelector } from 'react-redux';
+import HeaderPlaylist from './HeaderPlaylist';
+import PlaybackControlsPlaylist from './PlaybackControlsPlaylist';
+import TrackList from './TrackList';
 
+import { useSelector } from 'react-redux';
 import fetchWebApi from '../Data/fetchWebApi';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function PlaylistView() {
-    const [playlistInfo, setProfileInfo] = useState();
-    const [tracksInfo, setTracksInfo] = useState();
-
-    const state = useSelector(state => {
-        return state;
+    const pageContent = useSelector(state => {
+        return state.pageContent.pageContent;
     });
+    const [playlistInfo, setPlaylistInfo] = useState();
 
     useEffect(() => {
-        getPlaylistInfo();
-        getTracksInfo();
-    }, []);
+        if (!pageContent) return;
+        getPlaylistInfo(pageContent.id);
+    }, [pageContent]);
 
-    async function getPlaylistInfo() {
-        setProfileInfo(
-            await fetchWebApi('v1/playlists/7IhvkRwF1WXQNsP78WSnNw', 'GET')
-        );
-    }
-
-    async function getTracksInfo() {
-        setTracksInfo(
-            await fetchWebApi(
-                'v1/playlists/7IhvkRwF1WXQNsP78WSnNw/tracks',
-                'GET'
-            )
-        );
-    }
-
-    function calcTotalTime() {
-        const initialValue = 0;
-        const totalTime = tracksInfo.items.reduce(
-            (accumulator, currentValue) => {
-                console.log(typeof currentValue.track.duration_ms);
-                accumulator + currentValue.track.duration_ms;
-            },
-            initialValue
-        );
-        console.log(totalTime);
+    async function getPlaylistInfo(id) {
+        setPlaylistInfo(await fetchWebApi(`v1/playlists/${id}`, 'GET'));
     }
 
     return (
-        <>
+        <div className="main-view">
             {playlistInfo ? (
-                <div className="main-view">
-                    <div className={styles['playlist-info-container']}>
-                        <img
-                            className={styles['playlist-info-image']}
-                            src={playlistInfo.images[0].url}
-                            alt="playlist-image"
-                        />
-                        <div className={styles['playlist-info-text-container']}>
-                            <p>Liste de lecture</p>
-                            <div>{playlistInfo.name}</div>
-                            <div>
-                                <span>{playlistInfo.owner.display_name}</span>
-                                <span className={styles['mentions-aime']}>
-                                    {playlistInfo.followers.total} mention
-                                    {playlistInfo.followers.total > 1
-                                        ? 's'
-                                        : ''}{' '}
-                                    « J'aime »
-                                </span>
-                                <span className={styles['total-tracks']}>
-                                    {playlistInfo.tracks.total} chansons,
-                                </span>
-                                <span>{calcTotalTime()}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles['play-btn-container']}>
-                        <button></button>
-                    </div>
-                    <div>
-                        <div
-                            className={styles['colomn-titles-container']}
-                        ></div>
-                        <ul></ul>
-                    </div>
-                </div>
+                <>
+                    <HeaderPlaylist
+                        pageContent={pageContent}
+                        playlistInfo={playlistInfo}
+                    />
+                    <PlaybackControlsPlaylist
+                        pageContent={pageContent}
+                        playlistInfo={playlistInfo}
+                    />
+                    <TrackList
+                        pageContent={pageContent}
+                        playlistInfo={playlistInfo}
+                    />
+                </>
             ) : (
                 <></>
             )}
-        </>
+        </div>
     );
 }
 

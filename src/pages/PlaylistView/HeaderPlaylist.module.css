@@ -1,0 +1,52 @@
+.playlist-info-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 10rem;
+    position: relative;
+    padding: 2.4rem;
+}
+
+.playlist-info-image {
+    height: 192px;
+    width: 192px;
+}
+
+@media (min-width: 1280px) {
+    .playlist-info-image {
+        height: 232px;
+        min-width: 232px;
+        width: 232px;
+    }
+}
+
+.playlist-info-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    align-self: flex-end;
+    margin-left: 2rem;
+}
+
+.info-playlist-type,
+.info-playlist-owner {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.info-playlist-title {
+    font-size: 9.6rem;
+    font-weight: 700;
+}
+
+.info-playlist-other-container {
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+.mentions-aime::before,
+.total-tracks::before {
+    content: '•';
+    margin: 0px 4px;
+}

@@ -7,6 +7,7 @@ import CallBack from './authentication/Callback';
 import MainContent from './pages/MainContent/MainContent';
 
 import MainView from './pages/MainView/MainView';
+import Search from './pages/Search/Search';
 import AlbumView from './pages/AlbumView/AlbumView';
 import PlaylistView from './pages/PlaylistView/PlaylistView';
 import SectionView from './pages/SectionView/SectionView';
@@ -23,48 +24,27 @@ const router = createBrowserRouter([
     },
     {
         path: '/',
-
         element: <MainContent />,
         children: [
             {
                 path: '/Home',
-                element: (
-                    <>
-                        <MainView />
-                    </>
-                ),
+                element: <MainView />,
             },
             {
                 path: '/search',
-                element: (
-                    <>
-                        <MainView />
-                    </>
-                ),
+                element: <Search />,
             },
             {
                 path: '/album',
-                element: (
-                    <>
-                        <AlbumView />
-                    </>
-                ),
+                element: <AlbumView />,
             },
             {
                 path: '/playlist',
-                element: (
-                    <>
-                        <PlaylistView />
-                    </>
-                ),
+                element: <PlaylistView />,
             },
             {
                 path: '/section',
-                element: (
-                    <>
-                        <SectionView />
-                    </>
-                ),
+                element: <SectionView />,
             },
         ],
     },
