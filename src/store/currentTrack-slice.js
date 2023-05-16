@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialCurrentTrack = {
     currentPlaylist: undefined,
     currentPlaylistTracks: undefined,
+    temporaryCurrentPlaylistTracks: undefined,
     currentTrack: undefined,
     playState: false,
     trackTime: 0,
@@ -21,9 +22,13 @@ const currentTrackSlice = createSlice({
             state.currentPlaylistTracks = action.payload;
         },
 
+        newTemporaryCurrentPlaylistTracks(state, action) {
+            state.temporaryCurrentPlaylistTracks = action.payload;
+        },
+
         newCurrentTrack(state, action) {
             state.currentTrack =
-                action.payload.track.items[action.payload.trackPosition];
+                action.payload.track[action.payload.trackPosition];
             state.trackPosition = action.payload.trackPosition;
         },
 

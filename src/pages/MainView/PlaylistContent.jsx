@@ -6,6 +6,8 @@ import fetchWebApi from '../Data/fetchWebApi';
 
 import handleResumeTrack from '../Logic/handleResumeTrack';
 
+import handleToNewView from '../Logic/handleToNewView';
+
 import styles from './PlaylistContent.module.css';
 
 function PlaylistContent(props) {
@@ -45,7 +47,13 @@ function PlaylistContent(props) {
             return <div>Vous n'avez pas encore de liste de lecture.</div>;
         return playlistContent?.items.map(item => {
             return (
-                <div key={item.name} className={styles['card']}>
+                <div
+                    onClick={() => {
+                        handleToNewView(item, 'playlist');
+                    }}
+                    key={item.name}
+                    className={styles['card']}
+                >
                     {ImageMiniPlaylist(item)}
                     <p>{item.name}</p>
                 </div>
@@ -66,7 +74,10 @@ function PlaylistContent(props) {
                     aria-label="Faire jouer Mix quotidien 1"
                     data-encore-id="buttonPrimary"
                     className={styles['play-button']}
-                    onClick={() => handleResumeTrack(item)}
+                    onClick={e => {
+                        e.stopPropagation();
+                        handleResumeTrack(item);
+                    }}
                 >
                     <span aria-hidden="true">
                         {!playState && (
@@ -103,7 +114,13 @@ function PlaylistContent(props) {
         if (!playlistContent) return <div>Chargement...</div>;
         return playlistContent?.playlists.items.map(item => {
             return (
-                <div key={item.name} className={styles['card']}>
+                <div
+                    onClick={() => {
+                        handleToNewView(item, 'playlist');
+                    }}
+                    key={item.name}
+                    className={styles['card']}
+                >
                     {ImageMiniPlaylist(item)}
                     <p>{item.name}</p>
                 </div>

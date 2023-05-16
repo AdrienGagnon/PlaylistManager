@@ -19,6 +19,16 @@ function SoundIFrame() {
         return state.currentTrack;
     });
 
+    function handlePlayback(EmbedController) {
+        if (
+            placeholder.current.children[0].dataset.spotifyPlaystate === 'true'
+        ) {
+            EmbedController.resume();
+        } else {
+            EmbedController.pause();
+        }
+    }
+
     useEffect(() => {
         window.onSpotifyIframeApiReady = IFrameAPI => {
             const element = document.getElementById('embed-iframe');
@@ -35,6 +45,7 @@ function SoundIFrame() {
                     EmbedController.addListener('playback_update', e => {
                         setTrackTime(parseInt(e.data.position / 1000, 10));
                     });
+                    handlePlayback(EmbedController);
                 };
 
                 const config = {
@@ -42,19 +53,13 @@ function SoundIFrame() {
                 };
 
                 const observer = new MutationObserver(callback);
+
                 observer.observe(placeholder.current, config);
 
                 const callbackPlayState = () => {
                     if (!placeholder.current.dataset.spotifyId) return;
 
-                    if (
-                        placeholder.current.children[0].dataset
-                            .spotifyPlaystate === 'true'
-                    ) {
-                        EmbedController.resume();
-                    } else {
-                        EmbedController.pause();
-                    }
+                    handlePlayback(EmbedController);
                 };
 
                 const observerPlayState = new MutationObserver(
@@ -72,7 +77,7 @@ function SoundIFrame() {
     }, []);
 
     return (
-        <div>
+        <div className={styles['sound-container']}>
             <div id="embed-iframe"></div>
             <script
                 src="https://open.spotify.com/embed-podcast/iframe-api/v1"

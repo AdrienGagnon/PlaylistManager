@@ -6,11 +6,11 @@ import CallBack from './authentication/Callback';
 
 import MainContent from './pages/MainContent/MainContent';
 
-import Nav from './pages/Navigation/Nav';
 import MainView from './pages/MainView/MainView';
-import HeaderMainView from './pages/Header/HeaderMainView';
+import AlbumView from './pages/AlbumView/AlbumView';
+import PlaylistView from './pages/PlaylistView/PlaylistView';
+import SectionView from './pages/SectionView/SectionView';
 import LoggingIn from './pages/LoggingIn/LoggingIn';
-import NowPlayingBar from './pages/NowPlayingBar/NowPlayingBar';
 
 const router = createBrowserRouter([
     {
@@ -30,10 +30,7 @@ const router = createBrowserRouter([
                 path: '/Home',
                 element: (
                     <>
-                        <HeaderMainView />
-                        <Nav />
                         <MainView />
-                        <NowPlayingBar />
                     </>
                 ),
             },
@@ -41,9 +38,31 @@ const router = createBrowserRouter([
                 path: '/search',
                 element: (
                     <>
-                        <Nav />
                         <MainView />
-                        <NowPlayingBar />
+                    </>
+                ),
+            },
+            {
+                path: '/album',
+                element: (
+                    <>
+                        <AlbumView />
+                    </>
+                ),
+            },
+            {
+                path: '/playlist',
+                element: (
+                    <>
+                        <PlaylistView />
+                    </>
+                ),
+            },
+            {
+                path: '/section',
+                element: (
+                    <>
+                        <SectionView />
                     </>
                 ),
             },

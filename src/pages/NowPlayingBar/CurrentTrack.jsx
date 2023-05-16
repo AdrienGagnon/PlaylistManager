@@ -6,7 +6,6 @@ function CurrentTrack() {
     const currentTrackInfo = useSelector(state => {
         return state.currentTrack;
     });
-    console.log(currentTrackInfo);
 
     return (
         <>

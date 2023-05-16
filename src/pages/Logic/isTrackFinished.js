@@ -7,7 +7,6 @@ function isTrackFinished() {
     const totalTrackTime =
         store.getState().currentTrack.currentTrack?.track.duration_ms;
     if (!totalTrackTime) return;
-    console.log(trackTime, totalTrackTime);
 
     if (trackTime >= totalTrackTime) {
         handleNextTrack();

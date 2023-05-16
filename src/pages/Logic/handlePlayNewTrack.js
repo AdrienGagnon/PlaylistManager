@@ -2,6 +2,8 @@ import store from '../../store';
 
 import { currentTrackActions } from '../../store/currentTrack-slice';
 
+import shuffle from '../utils/shuffle';
+
 import fetchWebApi from '../Data/fetchWebApi';
 
 function handlePlayNewTrack(item, trackPosition = 0) {
@@ -10,17 +12,35 @@ function handlePlayNewTrack(item, trackPosition = 0) {
         store.dispatch(currentTrackActions.newCurrentPlaylist(item));
 
         fetchWebApi(`v1/playlists/${item.id}/tracks`, 'GET').then(e => {
+            let shuffleArray;
+            const shuffleState = store.getState().playlistPlaybackOrder.shuffle;
             // Set the tracks of the playlist
-            store.dispatch(currentTrackActions.newCurrentPlaylistTracks(e));
+            if (shuffleState) {
+                // Set the normal track playlist to the temporary playlist
+                store.dispatch(
+                    currentTrackActions.newTemporaryCurrentPlaylistTracks(
+                        e.items
+                    )
+                );
+
+                // shuffle and set the playlist to current playlist
+                shuffleArray = shuffle(e.items);
+                store.dispatch(
+                    currentTrackActions.newCurrentPlaylistTracks(shuffleArray)
+                );
+            } else {
+                store.dispatch(
+                    currentTrackActions.newCurrentPlaylistTracks(e.items)
+                );
+            }
 
             // Sets the current track
             store.dispatch(
                 currentTrackActions.newCurrentTrack({
-                    track: e,
+                    track: shuffleState ? shuffleArray : e.items,
                     trackPosition: trackPosition,
                 })
             );
-
             // Set the track to play
             store.dispatch(currentTrackActions.playCurrentTrack());
         });

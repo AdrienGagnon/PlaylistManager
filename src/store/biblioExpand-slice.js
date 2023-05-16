@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialBiblioState = {
-    expandedBiblio: true,
+    expandedBiblio: false,
+    minimiser: false,
 };
 
 const biblioSlice = createSlice({
     name: 'expanded biblio',
     initialState: initialBiblioState,
     reducers: {
-        toggle(state) {
+        toggleExpanded(state) {
             state.expandedBiblio = !state.expandedBiblio;
+        },
+        toggleMinimiser(state) {
+            state.minimiser = !state.minimiser;
         },
     },
 });

@@ -9,6 +9,10 @@ import SoundIFrame from '../Sound/SoundIFrame';
 
 import './MainContent.css';
 
+import Nav from '../Navigation/Nav';
+import HeaderMainView from '../Header/HeaderMainView';
+import NowPlayingBar from '../NowPlayingBar/NowPlayingBar';
+
 function MainContent() {
     const [accessToken, setAccessToken] = useState();
 
@@ -31,7 +35,10 @@ function MainContent() {
     return (
         <div className="main-content">
             <SoundIFrame />
+            <HeaderMainView />
+            <Nav />
             <Outlet context={[accessToken, setAccessToken]} />
+            <NowPlayingBar />
         </div>
     );
 }

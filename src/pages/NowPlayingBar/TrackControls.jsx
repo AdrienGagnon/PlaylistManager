@@ -8,9 +8,16 @@ import ProgressBar from './ProgressBar';
 
 import handleNextTrack from '../Logic/handleNextTrack';
 
+import handleShuffleBtn from '../Logic/handleShuffleBtn';
+import handleLoopBtn from '../Logic/handleLoopBtn';
+
 function TrackControls() {
     const playState = useSelector(state => {
         return state.currentTrack.playState;
+    });
+
+    const playbackState = useSelector(state => {
+        return state.playlistPlaybackOrder;
     });
 
     return (
@@ -18,7 +25,11 @@ function TrackControls() {
             <div className={styles['buttons-container']}>
                 <div className={styles['left-buttons']}>
                     <button
-                        className={styles['shuffle-button']}
+                        onClick={handleShuffleBtn}
+                        className={[
+                            styles['shuffle-button'],
+                            playbackState.shuffle ? styles['activeBtn'] : '',
+                        ].join(' ')}
                         role="switch"
                         aria-checked="false"
                         aria-label="Activer la lecture aléatoire"
@@ -38,6 +49,7 @@ function TrackControls() {
                         </svg>
                     </button>
                     <button
+                        onClick={() => handleNextTrack('previous')}
                         className={styles['back-button']}
                         aria-label="Précédent"
                         data-testid="control-button-skip-back"
@@ -108,7 +120,11 @@ function TrackControls() {
                         </svg>
                     </button>
                     <button
-                        className={styles['loop-button']}
+                        onClick={handleLoopBtn}
+                        className={[
+                            styles['loop-button'],
+                            playbackState.loop ? styles['activeBtn'] : '',
+                        ].join(' ')}
                         role="checkbox"
                         aria-checked="false"
                         aria-label="Activer Répéter"

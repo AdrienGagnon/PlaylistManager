@@ -10,6 +10,18 @@
     align-items: center;
 }
 
+.buttons-container button:active {
+    scale: 1.1;
+}
+
+.buttons-container div svg {
+    fill: rgb(var(--SPOTIFY_LIGHT_GREY));
+}
+
+.buttons-container div svg:hover {
+    fill: white;
+}
+
 .left-buttons,
 .right-buttons {
     display: flex;
@@ -36,6 +48,10 @@ button[aria-label='Pause'] {
     height: 32px;
 }
 
+button[aria-label='Pause']:hover {
+    scale: 1.05;
+}
+
 .play-button path {
 }
 
@@ -43,4 +59,14 @@ button[aria-label='Pause'] {
 }
 
 .loop-button {
+}
+
+.activeBtn[aria-label='Activer la lecture aléatoire'] svg,
+.activeBtn[aria-label='Activer Répéter'] svg {
+    fill: rgb(var(--SPOTIFY_GREEN));
+}
+
+.activeBtn[aria-label='Activer la lecture aléatoire']:hover svg,
+.activeBtn[aria-label='Activer Répéter']:hover svg {
+    fill: rgb(var(--SPOTIFY_GREEN));
 }
