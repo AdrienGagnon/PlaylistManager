@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 import isTrackFinished from '../Logic/isTrackFinished';
 
+import calcTrackTime from '../utils/calcTrackTime';
+
 function ProgressBar() {
     const progressBar = useRef();
 
@@ -16,13 +18,6 @@ function ProgressBar() {
         return state.currentTrack.currentTrack?.track.duration_ms;
     });
 
-    function calcTime(time) {
-        if (!time) return `0:00`;
-        const min = Math.floor(time / 60);
-        const sec = Math.floor(time % 60);
-        return `${min ? min : '0'}:${sec < 10 ? '0' : ''}${sec}`;
-    }
-
     useEffect(() => {
         const pourcentage = (100 * trackTime) / (totalTrackTime / 1000);
         progressBar.current.style.transform = `translateX(calc(-100% - 1px + ${pourcentage}%))`;
@@ -31,7 +26,7 @@ function ProgressBar() {
 
     return (
         <div className={styles['time-container']}>
-            <div className={styles['time']}>{calcTime(trackTime)}</div>
+            <div className={styles['time']}>{calcTrackTime(trackTime)}</div>
             <div className={styles['track-progress']}>
                 {/* //TODO: adjust circle overflow*/}
                 <div ref={progressBar} className={styles['progress-bar']}>
@@ -39,7 +34,7 @@ function ProgressBar() {
                 </div>
             </div>
             <div className={styles['time']}>
-                {calcTime(totalTrackTime / 1000)}
+                {calcTrackTime(totalTrackTime / 1000)}
             </div>
         </div>
     );

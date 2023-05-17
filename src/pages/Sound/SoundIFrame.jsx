@@ -20,6 +20,7 @@ function SoundIFrame() {
     });
 
     function handlePlayback(EmbedController) {
+        console.log('handleplayback');
         if (
             placeholder.current.children[0].dataset.spotifyPlaystate === 'true'
         ) {

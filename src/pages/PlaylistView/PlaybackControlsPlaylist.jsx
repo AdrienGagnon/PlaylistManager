@@ -2,21 +2,27 @@ import styles from './PlaybackControlsPlaylist.module.css';
 
 import { useSelector } from 'react-redux';
 
+import handleResumeTrack from '../Logic/handleResumeTrack';
+
 function PlaybackControlsPlaylist() {
+    const pageContent = useSelector(state => {
+        return state.pageContent.pageContent;
+    });
+
     const playState = useSelector(state => {
-        return state.playState;
+        return state.currentTrack.playState;
     });
 
     return (
         <div className={styles['play-btn-container']}>
             <button
                 data-testid="play-button"
-                aria-label="Faire jouer Mix quotidien 1"
+                aria-label="Faire jouer"
                 data-encore-id="buttonPrimary"
                 className={styles['play-button']}
                 onClick={e => {
                     e.stopPropagation();
-                    handleResumeTrack(item);
+                    handleResumeTrack(pageContent);
                 }}
             >
                 <span aria-hidden="true">

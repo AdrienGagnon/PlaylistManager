@@ -28,9 +28,10 @@ function HeaderPlaylist(props) {
             resizeTitle(lastMove, fontSizeArray)
         );
         return () => {
-            window.removeEventListener('resize', () =>
-                resizeTitle(lastMove, fontSizeArray)
-            );
+            window.removeEventListener('resize', () => {
+                if (!playlistTitle.current) return;
+                resizeTitle(lastMove, fontSizeArray);
+            });
         };
     }, [titleSize]);
 

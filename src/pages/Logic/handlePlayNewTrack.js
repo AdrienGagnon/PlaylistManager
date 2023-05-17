@@ -41,6 +41,7 @@ function handlePlayNewTrack(item, trackPosition = 0) {
                     trackPosition: trackPosition,
                 })
             );
+
             // Set the track to play
             store.dispatch(currentTrackActions.playCurrentTrack());
         });

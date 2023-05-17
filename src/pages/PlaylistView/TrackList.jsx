@@ -8,9 +8,12 @@ function TrackList(props) {
             <div className={styles['colomn-titles-container']}>
                 <span>#</span>
                 <span>Titre</span>
-                <span>Album</span>
-                <span>Date de l'ajout</span>
+                <span className={styles['list-item-album']}>Album</span>
+                <span className={styles['list-item-date']}>
+                    Date de l'ajout
+                </span>
                 <svg
+                    className={styles['list-item-duration']}
                     role="img"
                     height="16"
                     width="16"

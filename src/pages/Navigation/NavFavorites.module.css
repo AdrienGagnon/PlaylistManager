@@ -1,0 +1,12 @@
+.favorites-container {
+    overflow-y: hidden;
+}
+
+.main-view::-webkit-scrollbar {
+    background: none;
+    scrollbar-gutter: stable both-edges;
+}
+
+.main-view::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--SPOTIFY_GREY));
+}
