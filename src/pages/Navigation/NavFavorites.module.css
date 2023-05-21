@@ -1,12 +1,69 @@
+@import url('../Constants/Constants.css');
+
 .favorites-container {
-    overflow-y: hidden;
+    overflow-y: overlay;
+    padding: 1rem 2rem var(--height-current-track-image) 1rem;
+    width: 100%;
+    position: relative;
 }
 
-.main-view::-webkit-scrollbar {
+.favorites-container::-webkit-scrollbar {
     background: none;
     scrollbar-gutter: stable both-edges;
 }
 
-.main-view::-webkit-scrollbar-thumb {
+.favorites-container::-webkit-scrollbar-thumb {
     background-color: rgb(var(--SPOTIFY_GREY));
+}
+
+.favorites-item-container,
+.favorites-item-info-container {
+    width: 100%;
+    display: flex;
+    text-overflow: ellipsis;
+}
+
+.favorites-item-container {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.favorites-item-container:hover {
+    background: rgb(var(--SPOTIFY_DARK_GREY));
+}
+
+.favorites-item-info-container {
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    overflow: hidden;
+}
+
+.favorites-item-info-container > span {
+    width: 100%;
+    text-align: start;
+}
+
+.favorites-item-info-artists-container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+}
+
+.favorites-item-info-artists-container * {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+}
+
+.favorites-item-info-container > span,
+.favorites-item-info-artists-container > span:last-child {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.favorites-item-info-artists-container > span:last-child::before {
+    content: '•';
+    margin: 0px 4px;
 }

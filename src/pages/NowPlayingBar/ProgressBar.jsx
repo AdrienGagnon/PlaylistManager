@@ -3,7 +3,7 @@ import styles from './ProgressBar.module.css';
 
 import { useSelector } from 'react-redux';
 
-import isTrackFinished from '../Logic/isTrackFinished';
+// import isTrackFinished from '../Logic/isTrackFinished';
 
 import calcTrackTime from '../utils/calcTrackTime';
 
@@ -11,7 +11,7 @@ function ProgressBar() {
     const progressBar = useRef();
 
     const trackTime = useSelector(state => {
-        return state.currentTrack.trackTime;
+        return state.trackTime.trackTime;
     });
 
     const totalTrackTime = useSelector(state => {
@@ -21,13 +21,20 @@ function ProgressBar() {
     useEffect(() => {
         const pourcentage = (100 * trackTime) / (totalTrackTime / 1000);
         progressBar.current.style.transform = `translateX(calc(-100% - 1px + ${pourcentage}%))`;
-        isTrackFinished();
+        // isTrackFinished(); Handled in sound IFrame directly
     }, [trackTime]);
+
+    function handleTrackProgressLocation(e) {
+        console.log(e.target.getBoundingClientRect());
+    }
 
     return (
         <div className={styles['time-container']}>
             <div className={styles['time']}>{calcTrackTime(trackTime)}</div>
-            <div className={styles['track-progress']}>
+            <div
+                onClick={e => handleTrackProgressLocation(e)}
+                className={styles['track-progress']}
+            >
                 {/* //TODO: adjust circle overflow*/}
                 <div ref={progressBar} className={styles['progress-bar']}>
                     <div className={styles['cursor']}></div>

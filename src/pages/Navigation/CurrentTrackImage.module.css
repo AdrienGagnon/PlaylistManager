@@ -1,0 +1,16 @@
+.current-track-img {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 250px;
+    width: auto;
+    translate: 0 100%;
+    animation: slideInImage 300ms forwards;
+}
+
+@keyframes slideInImage {
+    to {
+        translate: 0;
+    }
+}

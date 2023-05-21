@@ -5,14 +5,16 @@ import styles from './SoundIFrame.module.css';
 
 import { useDispatch } from 'react-redux';
 
-import { currentTrackActions } from '../../store/currentTrack-slice';
+import { trackTimeActions } from '../../store/trackTime-slice';
+
+import handleNextTrack from '../Logic/handleNextTrack';
 
 function SoundIFrame() {
     const placeholder = useRef();
     const dispatch = useDispatch();
 
     const setTrackTime = time => {
-        dispatch(currentTrackActions.trackTime(time));
+        dispatch(trackTimeActions.trackTime(time));
     };
 
     const currentTrackInfo = useSelector(state => {
@@ -20,7 +22,6 @@ function SoundIFrame() {
     });
 
     function handlePlayback(EmbedController) {
-        console.log('handleplayback');
         if (
             placeholder.current.children[0].dataset.spotifyPlaystate === 'true'
         ) {
@@ -45,6 +46,12 @@ function SoundIFrame() {
                     );
                     EmbedController.addListener('playback_update', e => {
                         setTrackTime(parseInt(e.data.position / 1000, 10));
+                        if (
+                            e.data.position >= e.data.duration &&
+                            !e.data.isPaused
+                        ) {
+                            handleNextTrack();
+                        }
                     });
                     handlePlayback(EmbedController);
                 };

@@ -16,7 +16,7 @@ function HeaderPlaylist(props) {
     const playlistInfoContainer = useRef();
 
     useEffect(() => {
-        // calcTotalTime();
+        calcTotalTime();
         playlistTitleSizing();
     }, [props.playlistInfo]);
 
@@ -77,7 +77,7 @@ function HeaderPlaylist(props) {
     }
 
     async function calcTotalTime() {
-        if (!props.playlistInfo) return;
+        if (!props.playlistInfo?.items) return;
         let timeArray = props.playlistInfo.items;
         if (props.playlistInfo.total > 100) {
             for (let i = 100; i < props.playlistInfo.total + 100; i = i + 100) {

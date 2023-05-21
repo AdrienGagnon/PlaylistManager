@@ -41,11 +41,11 @@ function NavFavorites() {
                                 key={album.album.name}
                                 className={styles['favorites-item-container']}
                             >
-                                {/* <img
+                                <img
                                     key={album.album.name}
                                     src={album.album.images[2].url}
                                     alt="album-img"
-                                /> */}
+                                />
                                 <div
                                     className={
                                         styles['favorites-item-info-container']

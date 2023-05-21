@@ -2,14 +2,14 @@ import authentication from '../../authentication';
 
 import { gsap } from 'gsap';
 
-import band from './assets/band.jpg';
-import drums from './assets/drums.jpg';
-import guitare from './assets/guitare.jpg';
-import microphone from './assets/microphone.jpg';
-import piano from './assets/piano.jpg';
-import show from './assets/show.jpg';
-import vinyl from './assets/vinyl.jpg';
-import vinyls from './assets/vinyls.jpg';
+import band from './assets/compressed/band.jpg';
+import drums from './assets/compressed/drums.jpg';
+import guitare from './assets/compressed/guitare.jpg';
+import microphone from './assets/compressed/microphone.jpg';
+import piano from './assets/compressed/piano.jpg';
+import show from './assets/compressed/show.jpg';
+import vinyl from './assets/compressed/vinyl.jpg';
+import vinyls from './assets/compressed/vinyls.jpg';
 
 import linkedIn from './assets/linkedin-logo.png';
 
@@ -28,7 +28,7 @@ const LoggindIn = () => {
             parallaxContainer.current.children
         );
         let lastMove = 0;
-        /* document.addEventListener('mousemove', e => {
+        document.addEventListener('mousemove', e => {
             if (Date.now() - lastMove < 100) return;
             arr.forEach(element => {
                 const speed = element.getAttribute('data-speed');
@@ -47,7 +47,7 @@ const LoggindIn = () => {
             arr.forEach(element => {
                 element.style = `translate: 0px 0px`;
             });
-        }); */
+        });
     }
 
     return (
