@@ -1,0 +1,32 @@
+@import url('../Constants/Constants.css');
+
+.card {
+    padding: 1.6rem;
+    background-color: #181818;
+    border-radius: 1rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 133px;
+    text-decoration: none;
+}
+
+.card:hover {
+    background-color: #282828;
+}
+
+.card p {
+    margin-block: 1rem;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card:hover .play-button {
+    opacity: 1;
+    bottom: 8px;
+}
+
+.artist img {
+    border-radius: 100%;
+}

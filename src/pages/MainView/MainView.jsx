@@ -37,6 +37,7 @@ function MainView() {
                     <PlaylistContent
                         accessToken={accessToken}
                         type={'v1/me/playlists'}
+                        objectType={'UserPlaylists'}
                     />
                 </PlaylistItem>
                 <PlaylistItem
@@ -46,6 +47,37 @@ function MainView() {
                     <PlaylistContent
                         accessToken={accessToken}
                         type={'v1/browse/featured-playlists'}
+                        objectType={'RecommendedPlaylists'}
+                    />
+                </PlaylistItem>
+                <PlaylistItem
+                    playlist={'UserSavedAlbums'}
+                    title={'Vos albums favoris'}
+                >
+                    <PlaylistContent
+                        accessToken={accessToken}
+                        type={'v1/me/albums'}
+                        objectType={'UserSavedAlbums'}
+                    />
+                </PlaylistItem>
+                <PlaylistItem
+                    playlist={'newReleases'}
+                    title={'Nouveaux albums'}
+                >
+                    <PlaylistContent
+                        accessToken={accessToken}
+                        type={'v1/browse/new-releases'}
+                        objectType={'newReleases'}
+                    />
+                </PlaylistItem>
+                <PlaylistItem
+                    playlist={'UserArtists'}
+                    title={'Vos artistes préférés'}
+                >
+                    <PlaylistContent
+                        accessToken={accessToken}
+                        type={'v1/me/following?type=artist'}
+                        objectType={'UserArtists'}
                     />
                 </PlaylistItem>
             </ul>

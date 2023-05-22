@@ -41,7 +41,8 @@ function authentication() {
 
     generateCodeChallenge(codeVerifier).then(codeChallenge => {
         let state = generateRandomString(16);
-        let scope = 'user-read-private user-read-email user-library-read';
+        let scope =
+            'user-read-private user-read-email user-library-read user-follow-read';
 
         localStorage.setItem('code_verifier', codeVerifier);
 

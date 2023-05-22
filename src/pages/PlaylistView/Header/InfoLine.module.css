@@ -1,0 +1,16 @@
+.info-playlist-other-container {
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+.mentions-aime::before,
+.total-tracks::before,
+.artist-names {
+    content: '•';
+    margin: 0px 4px;
+}
+
+.info-playlist-owner {
+    font-size: 1.6rem;
+    font-weight: 600;
+}

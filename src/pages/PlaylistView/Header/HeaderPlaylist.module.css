@@ -29,24 +29,13 @@
     margin-left: 2rem;
 }
 
-.info-playlist-type,
-.info-playlist-owner {
-    font-size: 1.6rem;
-    font-weight: 600;
-}
-
 .info-playlist-title {
-    font-size: 9.6rem;
+    /* font-size: 9.6rem; */
+    font-size: 5.6rem;
     font-weight: 700;
 }
 
-.info-playlist-other-container {
+.info-playlist-type {
     font-size: 1.6rem;
-    white-space: nowrap;
-}
-
-.mentions-aime::before,
-.total-tracks::before {
-    content: '•';
-    margin: 0px 4px;
+    font-weight: 600;
 }

@@ -8,7 +8,6 @@ import MainContent from './pages/MainContent/MainContent';
 
 import MainView from './pages/MainView/MainView';
 import Search from './pages/Search/Search';
-import AlbumView from './pages/AlbumView/AlbumView';
 import PlaylistView from './pages/PlaylistView/PlaylistView';
 import SectionView from './pages/SectionView/SectionView';
 import LoggingIn from './pages/LoggingIn/LoggingIn';
@@ -36,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/album',
-                element: <AlbumView />,
+                element: <PlaylistView option={'album'} />,
             },
             {
                 path: '/playlist',

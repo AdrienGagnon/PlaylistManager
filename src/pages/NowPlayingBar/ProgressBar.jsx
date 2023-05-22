@@ -3,12 +3,16 @@ import styles from './ProgressBar.module.css';
 
 import { useSelector } from 'react-redux';
 
-// import isTrackFinished from '../Logic/isTrackFinished';
+import { useDispatch } from 'react-redux';
+
+import { trackTimeActions } from '../../store/trackTime-slice';
 
 import calcTrackTime from '../utils/calcTrackTime';
 
 function ProgressBar() {
     const progressBar = useRef();
+
+    const dispatch = useDispatch();
 
     const trackTime = useSelector(state => {
         return state.trackTime.trackTime;
@@ -21,11 +25,19 @@ function ProgressBar() {
     useEffect(() => {
         const pourcentage = (100 * trackTime) / (totalTrackTime / 1000);
         progressBar.current.style.transform = `translateX(calc(-100% - 1px + ${pourcentage}%))`;
-        // isTrackFinished(); Handled in sound IFrame directly
     }, [trackTime]);
 
     function handleTrackProgressLocation(e) {
-        console.log(e.target.getBoundingClientRect());
+        if (!totalTrackTime) return;
+        const target = e.target.closest('.track-progress');
+        const info = target.getBoundingClientRect();
+        const progressPourcentage = Math.min(
+            Math.max(0, (e.clientX - info.left) / info.width),
+            1
+        );
+        const newTimeSec = (progressPourcentage * totalTrackTime) / 1000;
+        dispatch(trackTimeActions.ManualUpdateTrackTime(newTimeSec));
+        dispatch(trackTimeActions.UpdateTrackTime(newTimeSec));
     }
 
     return (
@@ -33,7 +45,9 @@ function ProgressBar() {
             <div className={styles['time']}>{calcTrackTime(trackTime)}</div>
             <div
                 onClick={e => handleTrackProgressLocation(e)}
-                className={styles['track-progress']}
+                className={['track-progress', styles['track-progress']].join(
+                    ' '
+                )}
             >
                 {/* //TODO: adjust circle overflow*/}
                 <div ref={progressBar} className={styles['progress-bar']}>

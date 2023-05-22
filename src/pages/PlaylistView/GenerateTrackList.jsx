@@ -60,9 +60,12 @@ function GenerateTrackList(props) {
         );
     }
 
+    console.log(props.playlistInfo);
+
     return (
         <ul className={styles['list-tracks-container']}>
             {props.playlistInfo.tracks.items.map((item, index) => {
+                console.log(item);
                 return (
                     <li
                         key={item.track.name}

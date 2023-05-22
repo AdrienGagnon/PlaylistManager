@@ -1,12 +1,9 @@
 import styles from './HeaderPlaylist.module.css';
 
-import { useSelector } from 'react-redux';
-
-import fetchWebApi from '../Data/fetchWebApi';
 import { useEffect, useRef, useState } from 'react';
+import InfoLine from './InfoLine';
 
 function HeaderPlaylist(props) {
-    const [playlistDuration, setPlaylistDuration] = useState();
     const [titleSize, setTitleSize] = useState({
         width: 10,
         height: 10,
@@ -16,7 +13,6 @@ function HeaderPlaylist(props) {
     const playlistInfoContainer = useRef();
 
     useEffect(() => {
-        calcTotalTime();
         playlistTitleSizing();
     }, [props.playlistInfo]);
 
@@ -76,27 +72,7 @@ function HeaderPlaylist(props) {
         });
     }
 
-    async function calcTotalTime() {
-        if (!props.playlistInfo?.items) return;
-        let timeArray = props.playlistInfo.items;
-        if (props.playlistInfo.total > 100) {
-            for (let i = 100; i < props.playlistInfo.total + 100; i = i + 100) {
-                const newFetch = await fetchWebApi(
-                    'v1/playlists/7IhvkRwF1WXQNsP78WSnNw/tracks',
-                    'GET',
-                    (offset = `?offset=${i}`)
-                );
-                timeArray = timeArray.concat(newFetch.items);
-            }
-        }
-        const totalTime = timeArray.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.track.duration_ms;
-        }, 0);
-        const hours = Math.floor(totalTime / 3600000);
-        const minutes = Math.floor((totalTime % 3600000) / (1000 * 60));
-        setPlaylistDuration({ hours: hours, min: minutes });
-    }
-
+    console.log(props.playlistInfo);
     return (
         <>
             {props.playlistInfo ? (
@@ -111,7 +87,9 @@ function HeaderPlaylist(props) {
                     />
                     <div className={styles['playlist-info-text-container']}>
                         <p className={styles['info-playlist-type']}>
-                            Liste de lecture
+                            {props.option === 'album'
+                                ? 'Album'
+                                : 'Liste de lecture'}
                         </p>
                         <p
                             ref={playlistTitle}
@@ -119,31 +97,10 @@ function HeaderPlaylist(props) {
                         >
                             {props.playlistInfo.name}
                         </p>
-                        <div
-                            className={styles['info-playlist-other-container']}
-                        >
-                            <span className={styles['info-playlist-owner']}>
-                                {props.playlistInfo.owner.display_name}
-                            </span>
-                            <span className={styles['mentions-aime']}>
-                                {props.playlistInfo.followers.total} mention
-                                {props.playlistInfo.followers.total > 1
-                                    ? 's'
-                                    : ''}{' '}
-                                « J'aime »
-                            </span>
-                            <span className={styles['total-tracks']}>
-                                {props.playlistInfo.tracks.total} chansons
-                            </span>
-                            {playlistDuration && (
-                                <span>
-                                    {', '}
-                                    {playlistDuration.hours > 0 &&
-                                        playlistDuration.hours + ' h '}
-                                    {playlistDuration.min} min
-                                </span>
-                            )}
-                        </div>
+                        <InfoLine
+                            playlistInfo={props.playlistInfo}
+                            option={props.option}
+                        />
                     </div>
                 </div>
             ) : (

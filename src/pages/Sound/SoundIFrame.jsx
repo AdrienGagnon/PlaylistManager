@@ -14,11 +14,15 @@ function SoundIFrame() {
     const dispatch = useDispatch();
 
     const setTrackTime = time => {
-        dispatch(trackTimeActions.trackTime(time));
+        dispatch(trackTimeActions.UpdateTrackTime(time));
     };
 
     const currentTrackInfo = useSelector(state => {
         return state.currentTrack;
+    });
+
+    const trackTime = useSelector(state => {
+        return state.trackTime;
     });
 
     function handlePlayback(EmbedController) {
@@ -39,6 +43,7 @@ function SoundIFrame() {
             };
 
             const callback = EmbedController => {
+                // Listener for new track
                 const callback = () => {
                     if (!placeholder.current.dataset.spotifyId) return;
                     EmbedController.loadUri(
@@ -64,6 +69,7 @@ function SoundIFrame() {
 
                 observer.observe(placeholder.current, config);
 
+                // Listener for playState (play or pause)
                 const callbackPlayState = () => {
                     if (!placeholder.current.dataset.spotifyId) return;
 
@@ -76,6 +82,23 @@ function SoundIFrame() {
 
                 observerPlayState.observe(
                     placeholder.current.children[0],
+                    config
+                );
+
+                // Listener for trackTime
+                // Listens for changes on manual update time, and sets the embed to that time
+                const callbackTrackTime = () => {
+                    EmbedController.seek(
+                        placeholder.current.children[1].dataset
+                            .spotifyManualtracktime
+                    );
+                };
+
+                const observerTrackTime = new MutationObserver(
+                    callbackTrackTime
+                );
+                observerTrackTime.observe(
+                    placeholder.current.children[1],
                     config
                 );
             };
@@ -95,9 +118,11 @@ function SoundIFrame() {
                 ref={placeholder}
                 className={styles.placeholder}
                 data-spotify-id={currentTrackInfo.currentTrack?.track.uri}
-                // data-spotify-playstate={currentTrackInfo.playState}
             >
                 <div data-spotify-playstate={currentTrackInfo.playState}></div>
+                <div
+                    data-spotify-manualtracktime={trackTime.manualTrackTime}
+                ></div>
             </div>
         </div>
     );

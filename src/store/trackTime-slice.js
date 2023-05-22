@@ -2,14 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialTrackTime = {
     trackTime: 0,
+    manualTrackTime: 0,
 };
 
 const trackTimeSlice = createSlice({
     name: 'current track playback time',
     initialState: initialTrackTime,
     reducers: {
-        trackTime(state, action) {
+        UpdateTrackTime(state, action) {
             state.trackTime = action.payload;
+        },
+
+        ManualUpdateTrackTime(state, action) {
+            state.manualTrackTime = action.payload;
         },
     },
 });

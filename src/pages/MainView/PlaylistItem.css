@@ -9,26 +9,28 @@
 .playlistitem > div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-right: 2rem;
 }
 
 .playlistitem h2 {
     font-size: 2rem;
     text-align: left;
     margin-block: 1rem;
-    flex-grow: 1;
 }
 
-.playlistitem > div p {
+.playlistitem > div a {
     margin-left: 0.5rem;
+    text-decoration: none;
 }
 
 .playlistitem h2,
-.playlistitem > div p {
+.playlistitem > div a {
     white-space: nowrap;
     cursor: pointer;
 }
 
 .playlistitem h2:hover,
-.playlistitem > div p:hover {
+.playlistitem > div a:hover {
     text-decoration: underline;
 }
