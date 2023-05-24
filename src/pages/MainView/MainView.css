@@ -11,17 +11,50 @@
     padding-inline: 1rem;
     position: relative;
     isolation: isolate;
-
+    animation: fadeOut 300ms ease-in-out forwards;
+    animation-delay: 1s;
     overflow-y: overlay;
+}
+
+.main-view:hover {
+    animation: fadeIn 300ms ease-in-out forwards;
 }
 
 .main-view::-webkit-scrollbar {
     background: none;
     scrollbar-gutter: stable both-edges;
+    width: 10px;
 }
 
 .main-view::-webkit-scrollbar-thumb {
-    background-color: rgb(var(--SPOTIFY_GREY));
+    background: var(--var1);
+}
+
+/* Initial value is set manualy, cant be a variable */
+@property --var1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(83, 83, 83, 0.8);
+}
+
+@keyframes fadeIn {
+    0% {
+        --var1: transparent;
+    }
+
+    100% {
+        --var1: rgba(var(--SPOTIFY_GREY), 0.8);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        --var1: rgba(var(--SPOTIFY_GREY), 0.8);
+    }
+
+    100% {
+        --var1: transparent;
+    }
 }
 
 .main-view:before {
@@ -33,8 +66,8 @@
     top: 0;
     left: 0;
     background: linear-gradient(
-        rgba(88, 88, 88, 0.9),
-        rgb(var(--background-base)) 50%
+        rgba(88, 88, 88, 1) 10rem,
+        rgb(var(--background-base)) 60%
     );
     z-index: -1;
     border-radius: 1rem;

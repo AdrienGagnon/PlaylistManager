@@ -8,3 +8,7 @@ nav {
     flex-direction: column;
     position: relative;
 }
+
+nav > * {
+    padding: 1rem 2rem;
+}

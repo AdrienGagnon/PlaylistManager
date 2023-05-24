@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import NavFavoritesItem from './NavFavoritesItem';
 import fetchWebApi from '../../Data/fetchWebApi';
 
-function NavFavorites() {
+function NavFavorites(props) {
     const [accessToken, setAccessToken] = useState();
     const [userSavedAlbums, setUserSavedAlbums] = useState();
 
@@ -30,16 +30,19 @@ function NavFavorites() {
     return (
         <div className={styles['favorites-container']}>
             {userPlaylists &&
+                props.filter.playlist &&
                 userPlaylists.items.map(playlist => {
                     return (
                         <NavFavoritesItem
                             key={playlist.name}
                             album={playlist}
                             type={'playlist'}
+                            linkTo={'/playlist'}
                         />
                     );
                 })}
             {userSavedAlbums &&
+                props.filter.album &&
                 userSavedAlbums.items.map(albumObj => {
                     const album = albumObj.album;
                     return (
@@ -47,6 +50,7 @@ function NavFavorites() {
                             key={album.name}
                             album={album}
                             type={'album'}
+                            linkTo={'/album'}
                         />
                     );
                 })}

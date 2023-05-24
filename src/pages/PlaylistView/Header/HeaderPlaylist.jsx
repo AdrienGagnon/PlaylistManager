@@ -71,7 +71,7 @@ function HeaderPlaylist(props) {
             fontSize: 3,
         });
     }
-
+    console.log('props.playlistinfo', props.playlistInfo);
     return (
         <>
             {props.playlistInfo ? (

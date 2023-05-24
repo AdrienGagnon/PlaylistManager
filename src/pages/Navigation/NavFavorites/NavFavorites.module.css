@@ -1,15 +1,51 @@
+@import url('../../Constants/Constants.css');
+
 .favorites-container {
     overflow-y: overlay;
     padding: 1rem 2rem var(--height-current-track-image) 1rem;
     width: 100%;
     position: relative;
+    animation: fadeOut 300ms ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+.favorites-container:hover {
+    animation: fadeIn 300ms ease-in-out forwards;
 }
 
 .favorites-container::-webkit-scrollbar {
     background: none;
     scrollbar-gutter: stable both-edges;
+    width: 10px;
 }
 
 .favorites-container::-webkit-scrollbar-thumb {
-    background-color: rgb(var(--SPOTIFY_GREY));
+    background: var(--var1);
+}
+
+/* Initial value is set manualy, cant be a variable */
+@property --var1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(83, 83, 83, 0.8);
+}
+
+@keyframes fadeIn {
+    0% {
+        --var1: transparent;
+    }
+
+    100% {
+        --var1: rgba(var(--SPOTIFY_GREY), 0.8);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        --var1: rgba(var(--SPOTIFY_GREY), 0.8);
+    }
+
+    100% {
+        --var1: transparent;
+    }
 }

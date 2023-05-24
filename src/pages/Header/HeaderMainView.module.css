@@ -4,43 +4,19 @@ header {
     display: flex;
     height: fit-content;
     z-index: 1;
-    margin-top: 1rem;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    margin-inline: 1rem;
+    padding: 1rem 2rem 1rem 1rem;
+    background: rgba(88, 88, 88, 0.2);
 }
 
-.arrows-container {
-    display: flex;
-    gap: 1rem;
-}
-
-.arrows-container button,
-.install-link,
-.profil-icon {
+.header button,
+.header a span,
+.header > div:last-child {
     background: rgb(var(--background-base));
     border-radius: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border: none;
     cursor: pointer;
-}
-
-.download-container {
-    margin-left: auto;
-}
-
-.download-container a {
-    text-decoration: none;
-}
-
-.install-link {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 1.6rem;
-}
-
-.install-link span {
-    display: flex;
-    align-items: center;
 }

@@ -1,8 +1,17 @@
+import { NavLink } from 'react-router-dom';
+
 import styles from './NavFavoritesItem.module.css';
+import handleSetPageContent from '../../Logic/handleSetPageContent';
 
 function NavFavoritesItem(props) {
     return (
-        <div className={styles['favorites-item-container']}>
+        <NavLink
+            onClick={() => {
+                handleSetPageContent(props.album);
+            }}
+            to={props.linkTo}
+            className={styles['favorites-item-container']}
+        >
             <img
                 src={
                     props.album?.images[2]
@@ -43,7 +52,7 @@ function NavFavoritesItem(props) {
                     </span>
                 </div>
             </div>
-        </div>
+        </NavLink>
     );
 }
 

@@ -1,0 +1,25 @@
+.download-container {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.download-container:hover {
+    scale: 1.05;
+}
+
+.download-container a {
+    text-decoration: none;
+}
+
+.download-link {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.download-link span {
+    display: flex;
+    align-items: center;
+}

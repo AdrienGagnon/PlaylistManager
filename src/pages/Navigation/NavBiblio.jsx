@@ -8,7 +8,7 @@ import { biblioActions } from '../../store/biblioExpand-slice';
 
 import NavFilter from './NavFilter';
 
-function NavBiblio() {
+function NavBiblio(props) {
     const viewBiblio = useSelector(state => {
         return state.biblio.expandedBiblio;
     });
@@ -136,7 +136,7 @@ function NavBiblio() {
                     </svg>
                 </button>
             </div>
-            <NavFilter />
+            <NavFilter filter={props.filter} setFilter={props.setFilter} />
         </>
     );
 }

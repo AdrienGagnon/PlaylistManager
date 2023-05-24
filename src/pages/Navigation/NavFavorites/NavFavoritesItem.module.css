@@ -10,6 +10,7 @@
 .favorites-item-container {
     padding: 1rem;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .favorites-item-container:hover {

@@ -1,16 +1,28 @@
 .info-playlist-other-container {
+    display: flex;
     font-size: 1.6rem;
     white-space: nowrap;
+    flex-wrap: nowrap;
 }
 
 .mentions-aime::before,
 .total-tracks::before,
-.artist-names {
+.artist-names::before {
     content: '•';
     margin: 0px 4px;
 }
 
 .info-playlist-owner {
+    display: flex;
+    gap: 5px;
     font-size: 1.6rem;
     font-weight: 600;
+    width: min-content;
+}
+
+.info-playlist-owner span {
+    max-width: 20ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

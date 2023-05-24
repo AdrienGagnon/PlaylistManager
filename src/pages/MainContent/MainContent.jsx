@@ -8,6 +8,7 @@ import { userInfoActions } from '../../store/userInfo-slice';
 
 import SoundIFrame from '../Sound/SoundIFrame';
 import fetchWebApi from '../Data/fetchWebApi';
+import isPageContentEmpty from '../Logic/isPageContentEmpty';
 
 import './MainContent.css';
 
@@ -35,6 +36,7 @@ function MainContent() {
         updateAccesstoken(accessToken);
         setAccessToken(accessToken);
         updateUserPlaylists();
+        isPageContentEmpty();
         setTimeout(() => {
             console.log('le token a expire');
         }, 59 * 60 * 1000);

@@ -17,16 +17,17 @@ function PlaylistView(props) {
     useEffect(() => {
         if (!pageContent) return;
         getPlaylistInfo(pageContent.id);
+        return setPlaylistInfo(undefined);
     }, [pageContent]);
 
     async function getPlaylistInfo(id) {
         if (props.option === 'album') {
             setPlaylistInfo(await fetchWebApi(`v1/albums/${id}`, 'GET'));
-        } else {
+        } else if (props.option === 'playlist') {
             setPlaylistInfo(await fetchWebApi(`v1/playlists/${id}`, 'GET'));
         }
     }
-
+    console.log('pagecontent', pageContent);
     return (
         <div className="main-view">
             {playlistInfo ? (

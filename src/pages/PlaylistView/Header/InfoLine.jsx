@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import styles from './InfoLine.module.css';
 import fetchWebApi from '../../Data/fetchWebApi';
+import ArtistNames from '../../utils/ArtistNames';
 
 function InfoLine(props) {
     const [playlistDuration, setPlaylistDuration] = useState();
@@ -43,7 +44,7 @@ function InfoLine(props) {
         setPlaylistDuration({ hours: hours, min: minutes });
     }
 
-    function ArtistNames() {
+    /* function ArtistNames() {
         return props.playlistInfo.artists.map(artist => {
             return (
                 <span key={artist.name} className={styles['artist-names']}>
@@ -51,14 +52,19 @@ function InfoLine(props) {
                 </span>
             );
         });
-    }
+    } */
 
     return (
         <div className={styles['info-playlist-other-container']}>
             <span className={styles['info-playlist-owner']}>
-                {props.option === 'album'
-                    ? ArtistNames()
-                    : props.playlistInfo.owner.display_name}
+                {props.option === 'album' ? (
+                    <ArtistNames
+                        item={props.playlistInfo}
+                        divisionSymbol={'•'}
+                    />
+                ) : (
+                    props.playlistInfo.owner.display_name
+                )}
             </span>
             {props.option === 'playlist' &&
                 props.playlistInfo.followers.total > 0 && (

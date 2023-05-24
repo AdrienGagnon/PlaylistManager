@@ -1,4 +1,5 @@
 import styles from './TrackTitleAndArtist.module.css';
+import ArtistNames from '../../utils/ArtistNames';
 
 function TrackTitleAndArtist(props) {
     return (
@@ -7,18 +8,7 @@ function TrackTitleAndArtist(props) {
                 {props.item.name}
             </span>
             <div className={styles['list-item-info-artists-container']}>
-                {props.item.artists
-                    .map(artist => {
-                        return (
-                            <span
-                                key={artist.name}
-                                className={styles['list-item-info-artist']}
-                            >
-                                {artist.name}
-                            </span>
-                        );
-                    })
-                    .reduce((prev, curr) => [prev, <p>{','}</p>, curr])}
+                <ArtistNames item={props.item} divisionSymbol={','} />
             </div>
         </div>
     );

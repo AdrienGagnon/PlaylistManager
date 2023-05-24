@@ -1,76 +1,13 @@
 import styles from './HeaderMainView.module.css';
 import './HeaderMainView.css';
+import ArrowsHeader from './ArrowsHeader';
+import DownloadApp from './DownloadApp';
 
 function HeaderMainView() {
     return (
         <header className={styles.header}>
-            <div className={styles['arrows-container']}>
-                <button
-                    data-testid="top-bar-back-button"
-                    aria-label="Retour"
-                    aria-expanded="false"
-                >
-                    <svg
-                        role="img"
-                        height="16"
-                        width="16"
-                        aria-hidden="true"
-                        viewBox="0 0 16 16"
-                        data-encore-id="icon"
-                    >
-                        <path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path>
-                    </svg>
-                </button>
-                <button
-                    data-testid="top-bar-forward-button"
-                    aria-label="Avancer"
-                    disabled=""
-                >
-                    <svg
-                        role="img"
-                        height="16"
-                        width="16"
-                        aria-hidden="true"
-                        viewBox="0 0 16 16"
-                        data-encore-id="icon"
-                    >
-                        <path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path>
-                    </svg>
-                </button>
-            </div>
-            <div className={styles['download-container']}>
-                <a
-                    draggable="false"
-                    data-encore-id="buttonPrimary"
-                    href="/download"
-                >
-                    <span className={styles['install-link']}>
-                        <span
-                            aria-hidden="true"
-                            className="IconWrapper__Wrapper-sc-1hf1hjl-0 ppOnZ"
-                        >
-                            <svg
-                                role="img"
-                                height="16"
-                                width="16"
-                                aria-hidden="true"
-                                viewBox="0 0 16 16"
-                                data-encore-id="icon"
-                                className="Svg-sc-ytk21e-0 ldgdZj"
-                            >
-                                <path d="M4.995 8.745a.75.75 0 0 1 1.06 0L7.25 9.939V4a.75.75 0 0 1 1.5 0v5.94l1.195-1.195a.75.75 0 1 1 1.06 1.06L8 12.811l-.528-.528a.945.945 0 0 1-.005-.005L4.995 9.805a.75.75 0 0 1 0-1.06z"></path>
-                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z"></path>
-                            </svg>
-                        </span>
-                        <span
-                            className="Type__TypeElement-sc-goli3j-0 asTge ellipsis-one-line"
-                            data-encore-id="type"
-                        >
-                            Installez l'application
-                        </span>
-                    </span>
-                </a>
-            </div>
+            <ArrowsHeader />
+            <DownloadApp />
             <div className={styles['profil-icon']}>
                 <svg
                     role="img"
