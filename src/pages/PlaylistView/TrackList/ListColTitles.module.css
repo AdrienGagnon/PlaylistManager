@@ -1,7 +1,7 @@
-.list-section-container {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.4rem;
+@import url('../../Constants/Constants.css');
+
+.album-colomn-titles-container.colomn-titles-container {
+    grid-template-columns: [index] 16px [first] 4fr [last] minmax(120px, 1fr);
 }
 
 .colomn-titles-container {
@@ -23,18 +23,9 @@
     width: 100%;
 }
 
-.list-item-container {
-    list-style: none;
-    display: grid;
-    grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
-            120px,
-            1fr
-        );
-}
-
 .list-item-duration {
+    margin-left: auto;
     margin-right: 32px;
-    justify-self: end;
 }
 
 @media screen and (max-width: 1300px) {

@@ -72,7 +72,6 @@ function HeaderPlaylist(props) {
         });
     }
 
-    console.log(props.playlistInfo);
     return (
         <>
             {props.playlistInfo ? (

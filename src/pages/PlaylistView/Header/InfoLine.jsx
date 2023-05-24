@@ -14,12 +14,8 @@ function InfoLine(props) {
         if (!props.playlistInfo?.items && !props.playlistInfo?.tracks?.items) {
             return;
         }
-        let timeArray;
-        if (props.option === 'album') {
-            timeArray = props.playlistInfo.tracks.items;
-        } else {
-            timeArray = props.playlistInfo.items;
-        }
+        const timeArray = props.playlistInfo.tracks.items;
+
         if (props.playlistInfo.total > 100) {
             for (let i = 100; i < props.playlistInfo.total + 100; i = i + 100) {
                 const newFetch = await fetchWebApi(
@@ -30,6 +26,7 @@ function InfoLine(props) {
                 timeArray = timeArray.concat(newFetch.items);
             }
         }
+
         let totalTime;
         if (props.option === 'album') {
             totalTime = timeArray.reduce((accumulator, currentValue) => {
@@ -49,7 +46,9 @@ function InfoLine(props) {
     function ArtistNames() {
         return props.playlistInfo.artists.map(artist => {
             return (
-                <span className={styles['artist-names']}>{artist.name}</span>
+                <span key={artist.name} className={styles['artist-names']}>
+                    {artist.name}
+                </span>
             );
         });
     }
@@ -61,16 +60,19 @@ function InfoLine(props) {
                     ? ArtistNames()
                     : props.playlistInfo.owner.display_name}
             </span>
-            <span className={styles['mentions-aime']}>
-                {props.option === 'album'
-                    ? props.playlistInfo.release_date.slice(0, 4)
-                    : props.playlistInfo.followers.total +
-                          'mention' +
-                          props.playlistInfo.followers.total >
-                      1
-                    ? 's'
-                    : '' + "« J'aime »"}
-            </span>
+            {props.option === 'playlist' &&
+                props.playlistInfo.followers.total > 0 && (
+                    <span className={styles['mentions-aime']}>
+                        {props.option === 'album'
+                            ? props.playlistInfo.release_date.slice(0, 4)
+                            : props.playlistInfo.followers.total +
+                                  'mention' +
+                                  props.playlistInfo.followers.total >
+                              1
+                            ? 's'
+                            : '' + "« J'aime »"}
+                    </span>
+                )}
             <span className={styles['total-tracks']}>
                 {props.playlistInfo.tracks.total} chansons
             </span>

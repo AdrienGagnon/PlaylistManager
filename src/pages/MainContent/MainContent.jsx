@@ -4,8 +4,10 @@ import { Outlet } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { accessTokenActions } from '../../store/accessToken-slice';
+import { userInfoActions } from '../../store/userInfo-slice';
 
 import SoundIFrame from '../Sound/SoundIFrame';
+import fetchWebApi from '../Data/fetchWebApi';
 
 import './MainContent.css';
 
@@ -22,11 +24,17 @@ function MainContent() {
         dispatch(accessTokenActions.updateToken(accessToken));
     };
 
+    const updateUserPlaylists = async () => {
+        const userPlaylists = await fetchWebApi('v1/me/playlists', 'GET');
+        dispatch(userInfoActions.updateUserPlaylists(userPlaylists));
+    };
+
     // Sets the accessToken to state
     useEffect(() => {
         const accessToken = localStorage.getItem('access_token');
         updateAccesstoken(accessToken);
         setAccessToken(accessToken);
+        updateUserPlaylists();
         setTimeout(() => {
             console.log('le token a expire');
         }, 59 * 60 * 1000);

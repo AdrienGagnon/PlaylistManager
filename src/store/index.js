@@ -6,6 +6,7 @@ import currentTrackReducer from './currentTrack-slice';
 import playlistPlaybackOrderReducer from './playlistPlaybackOrder';
 import pageContentReducer from './pageContent-slice';
 import trackTimeReducer from './trackTime-slice';
+import userInfoReducer from './userInfo-slice';
 
 const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
         playlistPlaybackOrder: playlistPlaybackOrderReducer,
         pageContent: pageContentReducer,
         trackTime: trackTimeReducer,
+        userInfo: userInfoReducer,
     },
 });
 

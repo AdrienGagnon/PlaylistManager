@@ -1,8 +1,8 @@
 import styles from './PlaylistView.module.css';
 
 import HeaderPlaylist from './Header/HeaderPlaylist';
-import PlaybackControlsPlaylist from './PlaybackControlsPlaylist';
-import TrackList from './TrackList';
+import PlaybackControlsPlaylist from './PlaybackContainer/PlaybackControlsPlaylist';
+import TrackList from './TrackList/TrackList';
 
 import { useSelector } from 'react-redux';
 import fetchWebApi from '../Data/fetchWebApi';
@@ -20,7 +20,7 @@ function PlaylistView(props) {
     }, [pageContent]);
 
     async function getPlaylistInfo(id) {
-        if (pageContent.album_type) {
+        if (props.option === 'album') {
             setPlaylistInfo(await fetchWebApi(`v1/albums/${id}`, 'GET'));
         } else {
             setPlaylistInfo(await fetchWebApi(`v1/playlists/${id}`, 'GET'));
@@ -36,15 +36,19 @@ function PlaylistView(props) {
                         playlistInfo={playlistInfo}
                         option={props.option}
                     />
-                    <PlaybackControlsPlaylist
-                        pageContent={pageContent}
-                        playlistInfo={playlistInfo}
-                    />
-                    <TrackList
-                        pageContent={pageContent}
-                        playlistInfo={playlistInfo}
-                        option={props.option}
-                    />
+                    {props.option !== 'lplplplaylist' && (
+                        <>
+                            <PlaybackControlsPlaylist
+                                pageContent={pageContent}
+                                playlistInfo={playlistInfo}
+                            />
+                            <TrackList
+                                pageContent={pageContent}
+                                playlistInfo={playlistInfo}
+                                option={props.option}
+                            />
+                        </>
+                    )}
                 </>
             ) : (
                 <></>

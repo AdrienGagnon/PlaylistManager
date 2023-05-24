@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/playlist',
-                element: <PlaylistView />,
+                element: <PlaylistView option={'playlist'} />,
             },
             {
                 path: '/section',

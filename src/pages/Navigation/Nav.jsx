@@ -2,7 +2,7 @@ import './Nav.css';
 
 import NavButtons from './NavButtons';
 import NavBiblio from './NavBiblio';
-import NavFavorites from './NavFavorites';
+import NavFavorites from './NavFavorites/NavFavorites';
 import CurrentTrackImage from './CurrentTrackImage';
 import { useEffect, useRef } from 'react';
 

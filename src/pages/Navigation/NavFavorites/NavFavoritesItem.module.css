@@ -1,20 +1,4 @@
-@import url('../Constants/Constants.css');
-
-.favorites-container {
-    overflow-y: overlay;
-    padding: 1rem 2rem var(--height-current-track-image) 1rem;
-    width: 100%;
-    position: relative;
-}
-
-.favorites-container::-webkit-scrollbar {
-    background: none;
-    scrollbar-gutter: stable both-edges;
-}
-
-.favorites-container::-webkit-scrollbar-thumb {
-    background-color: rgb(var(--SPOTIFY_GREY));
-}
+@import url('../../Constants/Constants.css');
 
 .favorites-item-container,
 .favorites-item-info-container {
@@ -32,6 +16,10 @@
     background: rgb(var(--SPOTIFY_DARK_GREY));
 }
 
+.favorites-item-container img {
+    height: 64px;
+}
+
 .favorites-item-info-container {
     flex-direction: column;
     justify-content: center;
@@ -43,6 +31,7 @@
 .favorites-item-info-container > span {
     width: 100%;
     text-align: start;
+    font-weight: 600;
 }
 
 .favorites-item-info-artists-container {

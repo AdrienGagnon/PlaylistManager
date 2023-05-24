@@ -1,0 +1,27 @@
+.list-item-number-container {
+    position: relative;
+    overflow: visible;
+    width: 16px;
+    height: 16px;
+}
+
+.list-item-play-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: none;
+    border: none;
+}
+
+.list-item-play-btn,
+.list-item-play-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.list-item-number {
+    text-align: center;
+    position: absolute;
+    width: 16px;
+}

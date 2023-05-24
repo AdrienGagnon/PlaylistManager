@@ -2,7 +2,7 @@ import styles from './PlaybackControlsPlaylist.module.css';
 
 import { useSelector } from 'react-redux';
 
-import handleResumeTrack from '../Logic/handleResumeTrack';
+import handleResumeTrack from '../../Logic/handleResumeTrack';
 
 function PlaybackControlsPlaylist() {
     const pageContent = useSelector(state => {

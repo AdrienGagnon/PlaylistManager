@@ -22,11 +22,15 @@
     text-overflow: ellipsis;
 }
 
-.card:hover .play-button {
+.card:hover button {
     opacity: 1;
     bottom: 8px;
 }
 
 .artist img {
     border-radius: 100%;
+}
+
+.artist-names {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
 }
