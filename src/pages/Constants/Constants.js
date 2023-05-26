@@ -1,5 +1,6 @@
 const ClientID = '315507717e724bc69c8557d906eaf6a8';
-const REDIRECTURI = 'http://localhost:1234/';
+const REDIRECTURI = 'https://playlist-manager-ag.netlify.app/';
+
 const ClientSecret = '89d6adea905c438ab928dc14a6e06b44';
 
 const SPOTIFY_GREEN = '30,215,96';
