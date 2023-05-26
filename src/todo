@@ -1,0 +1,22 @@
+general: -fix img not sticking to playbar
+    -fix shuffle not working on already playing tracks
+    -fix button press too fast (play stop)
+    -fix switch between album and playlist view
+    -add profil interactions
+
+playlist view: -add more than 100 tracks
+    -click on track number to play track
+    -add colomn title that follows with scroll
+    -add like and more options
+
+nav: -add expanded mode
+    -add mini mode
+    -add draggable nav to resize
+    -remove padding bottom when no song is played
+    -text green when currently playing
+
+playbar: -add sound control
+
+add artist view:
+
+add search view:

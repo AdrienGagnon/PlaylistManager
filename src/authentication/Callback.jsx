@@ -1,4 +1,4 @@
-import setToken from './SetToken';
+import setToken from './setToken';
 
 import styles from './Callback.module.css';
 
