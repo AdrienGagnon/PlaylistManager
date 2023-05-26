@@ -4,7 +4,6 @@ import './MainView.css';
 
 import fetchWebApi from '../Data/fetchWebApi';
 import PlaylistItem from './PlaylistItem';
-import PlaylistContent from './PlaylistContent';
 
 function MainView() {
     const [profileInfo, setProfileInfo] = useState([]);
@@ -31,55 +30,35 @@ function MainView() {
             </h1>
             <ul>
                 <PlaylistItem
-                    playlist={'UserPlaylists'}
                     title={'Vos listes de lecture'}
-                >
-                    <PlaylistContent
-                        accessToken={accessToken}
-                        type={'v1/me/playlists'}
-                        objectType={'UserPlaylists'}
-                    />
-                </PlaylistItem>
+                    accessToken={accessToken}
+                    type={'v1/me/playlists'}
+                    objectType={'UserPlaylists'}
+                ></PlaylistItem>
                 <PlaylistItem
-                    playlist={'RecommendedPlaylists'}
                     title={'Listes de lecture recommandées'}
-                >
-                    <PlaylistContent
-                        accessToken={accessToken}
-                        type={'v1/browse/featured-playlists'}
-                        objectType={'RecommendedPlaylists'}
-                    />
-                </PlaylistItem>
+                    accessToken={accessToken}
+                    type={'v1/browse/featured-playlists'}
+                    objectType={'RecommendedPlaylists'}
+                ></PlaylistItem>
                 <PlaylistItem
-                    playlist={'UserSavedAlbums'}
                     title={'Vos albums favoris'}
-                >
-                    <PlaylistContent
-                        accessToken={accessToken}
-                        type={'v1/me/albums'}
-                        objectType={'UserSavedAlbums'}
-                    />
-                </PlaylistItem>
+                    accessToken={accessToken}
+                    type={'v1/me/albums'}
+                    objectType={'UserSavedAlbums'}
+                ></PlaylistItem>
                 <PlaylistItem
-                    playlist={'newReleases'}
                     title={'Nouveaux albums'}
-                >
-                    <PlaylistContent
-                        accessToken={accessToken}
-                        type={'v1/browse/new-releases'}
-                        objectType={'newReleases'}
-                    />
-                </PlaylistItem>
+                    accessToken={accessToken}
+                    type={'v1/browse/new-releases'}
+                    objectType={'newReleases'}
+                ></PlaylistItem>
                 <PlaylistItem
-                    playlist={'UserArtists'}
                     title={'Vos artistes préférés'}
-                >
-                    <PlaylistContent
-                        accessToken={accessToken}
-                        type={'v1/me/following?type=artist'}
-                        objectType={'UserArtists'}
-                    />
-                </PlaylistItem>
+                    accessToken={accessToken}
+                    type={'v1/me/following?type=artist'}
+                    objectType={'UserArtists'}
+                ></PlaylistItem>
             </ul>
         </div>
     );

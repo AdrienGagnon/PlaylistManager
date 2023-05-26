@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialBiblioState = {
     expandedBiblio: false,
     minimiser: false,
+    mode: 'list',
 };
 
 const biblioSlice = createSlice({
@@ -12,8 +13,17 @@ const biblioSlice = createSlice({
         toggleExpanded(state) {
             state.expandedBiblio = !state.expandedBiblio;
         },
+
         toggleMinimiser(state) {
             state.minimiser = !state.minimiser;
+        },
+
+        toggleMode(state) {
+            if (state.mode === 'list') {
+                state.mode = 'grille';
+            } else {
+                state.mode = 'list';
+            }
         },
     },
 });

@@ -4,6 +4,7 @@
     font-size: 1.6rem;
     text-overflow: ellipsis;
     list-style: none;
+    position: relative;
 }
 
 .playlistitem > div {

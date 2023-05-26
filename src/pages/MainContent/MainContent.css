@@ -19,6 +19,8 @@
     padding: var(--panel-gap);
 
     align-self: stretch;
+
+    overflow: hidden;
 }
 
 .main-content nav,

@@ -3,7 +3,7 @@
 .list-item-container {
     display: grid;
     list-style: none;
-    grid-template-columns: [_94V5YG_index] 16px[_94V5YG_first] 6fr[_94V5YG_var1] 4fr[_94V5YG_var2] 3fr[_94V5YG_last] minmax(
+    grid-template-columns: [_94V5YG_index] 3ch [_94V5YG_first] 6fr[_94V5YG_var1] 4fr[_94V5YG_var2] 3fr[_94V5YG_last] minmax(
             120px,
             1fr
         );

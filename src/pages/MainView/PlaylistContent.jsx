@@ -1,26 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './PlaylistContent.module.css';
 
 import ListOfPlaylists from './ListOfPlaylists';
+import handleCardAmount from '../utils/handleCardAmount';
 
 function PlaylistContent(props) {
     const playlistsContainer = useRef();
+    const [cardAmount, setCardAmount] = useState(5);
 
     useEffect(() => {
-        resizePLaylists();
-        window.addEventListener('resize', resizePLaylists);
-        return () => window.removeEventListener('resize', resizePLaylists);
-    }, []);
+        handleCardAmount(playlistsContainer, cardAmount, setCardAmount);
 
-    // TODO: Resize needs rework to take changes to layout in account
-    function resizePLaylists() {
-        playlistsContainer.current.style.maxWidth =
-            window.innerWidth -
-            document.querySelector('nav').clientWidth -
-            46 +
-            'px';
-    }
+        window.addEventListener('resize', () => {
+            handleCardAmount(playlistsContainer, cardAmount, setCardAmount);
+        });
+        // return () => {
+        //     window.removeEventListener('resize', () => {
+        //         handleCardAmount(playlistsContainer, cardAmount, setCardAmount);
+        //     });
+        // };
+    }, []);
 
     return (
         <ul className={styles['playlists-container']} ref={playlistsContainer}>
@@ -28,6 +28,8 @@ function PlaylistContent(props) {
                 accessToken={props.accessToken}
                 type={props.type}
                 objectType={props.objectType}
+                cardAmount={cardAmount}
+                playlistContent={props.playlistContent}
             />
         </ul>
     );

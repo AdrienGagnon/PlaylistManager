@@ -10,6 +10,12 @@ async function fetchWebApi(endpoint, method, offset = '') {
                 method,
             }
         );
+        if (res.status !== 200) {
+            console.log(
+                "Une erreure est survenue lors de l'appel vers Spotify API."
+            );
+            return;
+        }
         return await res.json();
     } catch (error) {
         console.log(error);

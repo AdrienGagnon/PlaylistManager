@@ -32,7 +32,7 @@ function HeaderPlaylist(props) {
     }, [titleSize]);
 
     function resizeTitle(lastMove, fontSizeArray) {
-        if (Date.now() - lastMove > 100) {
+        if (Date.now() - lastMove > 100 && playlistTitle.current) {
             lastMove = Date.now();
             // TODO: fix the title size with window size increasing
             // if (
@@ -71,7 +71,7 @@ function HeaderPlaylist(props) {
             fontSize: 3,
         });
     }
-    console.log('props.playlistinfo', props.playlistInfo);
+
     return (
         <>
             {props.playlistInfo ? (

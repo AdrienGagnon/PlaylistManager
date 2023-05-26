@@ -66,11 +66,64 @@
     top: 0;
     left: 0;
     background: linear-gradient(
-        rgba(88, 88, 88, 1) 10rem,
+        var(--var-color) 10rem,
         rgb(var(--background-base)) 60%
     );
     z-index: -1;
     border-radius: 1rem;
+    animation: backgroundColor 360s infinite;
+}
+
+@property --var-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(83, 83, 83, 0.8);
+}
+
+@keyframes backgroundColor {
+    0% {
+        --var-color: rgba(12, 0, 66, 0.8);
+    }
+
+    10% {
+        --var-color: rgba(3, 3, 82, 0.8);
+    }
+
+    20% {
+        --var-color: rgba(6, 119, 163, 0.8);
+    }
+
+    30% {
+        --var-color: rgba(0, 199, 172, 0.8);
+    }
+
+    40% {
+        --var-color: rgba(1, 177, 103, 0.8);
+    }
+
+    50% {
+        --var-color: rgba(40, 173, 0, 0.8);
+    }
+
+    60% {
+        --var-color: rgba(201, 154, 0, 0.8);
+    }
+
+    70% {
+        --var-color: rgba(221, 70, 0, 0.8);
+    }
+
+    80% {
+        --var-color: rgba(99, 0, 0, 0.8);
+    }
+
+    90% {
+        --var-color: rgba(92, 0, 69, 0.8);
+    }
+
+    100% {
+        --var-color: rgba(34, 0, 73, 0.8);
+    }
 }
 
 .main-view ul {

@@ -1,22 +1,87 @@
-import './PlaylistItem.css';
-
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import './PlaylistItem.css';
 import handleSetPageContent from '../Logic/handleSetPageContent';
+import PlaylistContent from './PlaylistContent';
+import fetchWebApi from '../Data/fetchWebApi';
 
 function PlaylistItem(props) {
+    const [playlistContent, setPlaylistContent] = useState();
+    const userPlaylists = useSelector(state => {
+        return state.userInfo.userPlaylists;
+    });
+
+    useEffect(() => {
+        getPlaylistContent();
+    }, [props.accessToken]);
+
+    useEffect(() => {
+        if (!userPlaylists) return;
+        props.objectType === 'UserPlaylists' &&
+            setPlaylistContent({
+                items: userPlaylists.items,
+                linkTo: '/playlist',
+            });
+    }, [userPlaylists]);
+
+    async function getPlaylistContent() {
+        let fetchContent;
+        if (props.objectType !== 'UserPlaylists') {
+            fetchContent = await fetchWebApi(props.type, 'GET');
+            switch (props.objectType) {
+                case 'RecommendedPlaylists':
+                    setPlaylistContent({
+                        items: fetchContent.playlists.items,
+                        linkTo: '/playlist',
+                    });
+                    break;
+                case 'UserSavedAlbums':
+                    setPlaylistContent({
+                        items: fetchContent.items,
+                        linkTo: '/album',
+                    });
+                    break;
+                case 'newReleases':
+                    setPlaylistContent({
+                        items: fetchContent.albums.items,
+                        linkTo: '/album',
+                    });
+                    break;
+                case 'UserArtists':
+                    setPlaylistContent({
+                        items: fetchContent.artists.items,
+                        linkTo: '/artist',
+                    });
+                    break;
+            }
+        }
+    }
+
     return (
-        <li className={[props.playlist, 'playlistitem'].join(' ')}>
+        <li className={[props.objectType, 'playlistitem'].join(' ')}>
             <div>
                 <h2>{props.title}</h2>
                 <NavLink
-                    onClick={() => handleSetPageContent(item)}
-                    // to={'/section'}
+                    onClick={() =>
+                        handleSetPageContent({
+                            title: props.title,
+                            content: playlistContent,
+                        })
+                    }
+                    to={'/section'}
                 >
                     Tout afficher
                 </NavLink>
             </div>
-            {props.children}
+            {/* TODO: Handle content empty */}
+            <PlaylistContent
+                accessToken={props.accessToken}
+                type={props.type}
+                objectType={props.objectType}
+                playlistContent={playlistContent}
+            />
         </li>
     );
 }

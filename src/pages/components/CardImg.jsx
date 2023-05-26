@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 
 import handleResumeTrack from '../Logic/handleResumeTrack';
-import styles from './CardItem.module.css';
+import styles from './CardImg.module.css';
 
-function CardItem(props) {
+function CardImg(props) {
     const currentTrack = useSelector(state => {
         return state.currentTrack;
     });
@@ -14,6 +14,9 @@ function CardItem(props) {
                 className={styles['img-playlist-list']}
                 src={props.item.images[0]?.url}
                 alt=""
+                onLoad={() => {
+                    props.handleCardImgLoad();
+                }}
             />
             {props.linkTo !== '/artist' && (
                 <button
@@ -63,4 +66,4 @@ function CardItem(props) {
     );
 }
 
-export default CardItem;
+export default CardImg;

@@ -13,6 +13,9 @@ function NavFavoritesItem(props) {
             className={styles['favorites-item-container']}
         >
             <img
+                onLoad={() => {
+                    props.handleCardImgLoad();
+                }}
                 src={
                     props.album?.images[2]
                         ? props.album.images[2].url

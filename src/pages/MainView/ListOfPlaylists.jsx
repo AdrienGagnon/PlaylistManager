@@ -1,108 +1,59 @@
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
-import fetchWebApi from '../Data/fetchWebApi';
-import handleSetPageContent from '../Logic/handleSetPageContent';
-import CardItem from './CardItem';
-import LoadingCard from './LoadingCard';
 import styles from './ListOfPlaylists.module.css';
+import Card from '../components/Card';
 
 function ListOfPlaylists(props) {
-    const [playlistContent, setPlaylistContent] = useState();
+    const [imgLoaded, setImgLoaded] = useState(false);
 
-    const userPlaylists = useSelector(state => {
-        return state.userInfo.userPlaylists;
-    });
+    function handleCardImgLoad() {
+        setImgLoaded(true);
+    }
 
-    useEffect(() => {
-        if (!userPlaylists) return;
-        props.objectType === 'UserPlaylists' &&
-            setPlaylistContent({
-                items: userPlaylists.items,
-                linkTo: '/playlist',
-            });
-    }, [userPlaylists]);
-
-    useEffect(() => {
-        getPlaylistContent();
-    }, [props.accessToken]);
-
-    async function getPlaylistContent() {
-        let fetchContent;
-        if (props.objectType !== 'UserPlaylists') {
-            fetchContent = await fetchWebApi(props.type, 'GET');
-            switch (props.objectType) {
-                case 'RecommendedPlaylists':
-                    setPlaylistContent({
-                        items: fetchContent.playlists.items,
-                        linkTo: '/playlist',
-                    });
-                    break;
-                case 'UserSavedAlbums':
-                    setPlaylistContent({
-                        items: fetchContent.items,
-                        linkTo: '/album',
-                    });
-                    break;
-                case 'newReleases':
-                    setPlaylistContent({
-                        items: fetchContent.albums.items,
-                        linkTo: '/album',
-                    });
-                    break;
-                case 'UserArtists':
-                    setPlaylistContent({
-                        items: fetchContent.artists.items,
-                        linkTo: '/artist',
-                    });
-                    break;
-            }
-        }
+    let placeHolderArray = [];
+    for (let i = 0; i < props.cardAmount; i++) {
+        placeHolderArray.push(
+            <div key={i}>
+                <div className={styles['loading-card-img']}></div>
+                <div className={styles['loading-card-title']}></div>
+                <div className={styles['loading-card-artist']}></div>
+            </div>
+        );
     }
 
     return (
         <>
-            {playlistContent?.items ? (
-                playlistContent.items.map(item => {
-                    if (item.album) {
-                        item = item.album;
-                    }
-                    return (
-                        <NavLink
-                            onClick={() => handleSetPageContent(item)}
-                            to={playlistContent.linkTo}
-                            key={item.name}
-                            className={[
-                                styles['card'],
-                                playlistContent.linkTo === '/artist'
-                                    ? styles['artist']
-                                    : '',
-                            ].join(' ')}
-                        >
-                            <CardItem
-                                item={item}
-                                linkTo={playlistContent.linkTo}
-                            />
-                            <p>{item.name}</p>
-                            <p className={styles['artist-names']}>
-                                {playlistContent.linkTo === '/album' &&
-                                    item.artists
-                                        .map(artist => {
-                                            return artist.name;
-                                        })
-                                        .join(', ')}
-                                {playlistContent.linkTo === '/playlist' &&
-                                    item.owner?.display_name}
-                                {playlistContent.linkTo === '/artist' &&
-                                    'Artiste'}
-                            </p>
-                        </NavLink>
-                    );
-                })
-            ) : (
-                <LoadingCard />
-            )}
+            <div
+                className={[
+                    styles['loading-card-container'],
+                    imgLoaded ? styles['hidden'] : '',
+                ].join(' ')}
+            >
+                {placeHolderArray}
+            </div>
+            <div
+                className={[
+                    styles['real-cards-container'],
+                    imgLoaded ? '' : styles['hidden'],
+                ].join(' ')}
+            >
+                {props.playlistContent?.items &&
+                    props.playlistContent.items
+                        .slice(0, props.cardAmount)
+                        .map(item => {
+                            if (item.album) {
+                                item = item.album;
+                            }
+                            return (
+                                <Card
+                                    key={item.name}
+                                    item={item}
+                                    playlistContent={props.playlistContent}
+                                    handleCardImgLoad={handleCardImgLoad}
+                                />
+                            );
+                        })}
+            </div>
         </>
     );
 }

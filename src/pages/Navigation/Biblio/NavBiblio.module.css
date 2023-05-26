@@ -1,0 +1,43 @@
+@import url('../../Constants/Constants.css');
+
+.container-buttons {
+    display: flex;
+}
+
+svg {
+    fill: rgb(var(--SPOTIFY_LIGHT_GREY));
+    transition-duration: 300ms;
+}
+
+.biblio-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.biblio-button h3 {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+    transition-duration: 300ms;
+}
+
+.biblio-button:hover h3,
+.biblio-button:hover svg {
+    color: white;
+    fill: white;
+}
+
+.biblio-expand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.biblio-create-playlist {
+    margin-left: auto;
+}
+
+.biblio-mode,
+.biblio-more {
+    margin-left: 1rem;
+}

@@ -1,25 +1,36 @@
 @import url('../../Constants/Constants.css');
 
-.favorites-container {
+.favorites-container,
+.loading-card-container {
     overflow-y: overlay;
-    padding: 1rem 2rem var(--height-current-track-image) 1rem;
     width: 100%;
     position: relative;
     animation: fadeOut 300ms ease-in-out forwards;
     animation-delay: 1s;
 }
 
+.favorites-container {
+    padding: 1rem 2rem var(--height-current-track-image) 1rem;
+}
+
+.favorites-container.hidden,
+.loading-card-container.hidden {
+    display: none;
+}
+
 .favorites-container:hover {
     animation: fadeIn 300ms ease-in-out forwards;
 }
 
-.favorites-container::-webkit-scrollbar {
+.favorites-container::-webkit-scrollbar,
+.loading-card-container::-webkit-scrollbar {
     background: none;
     scrollbar-gutter: stable both-edges;
     width: 10px;
 }
 
-.favorites-container::-webkit-scrollbar-thumb {
+.favorites-container::-webkit-scrollbar-thumb,
+.loading-card-container::-webkit-scrollbar-thumb {
     background: var(--var1);
 }
 
@@ -48,4 +59,42 @@
     100% {
         --var1: transparent;
     }
+}
+
+.loading-item-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.loading-item-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    overflow: hidden;
+    width: 100%;
+    gap: 5px;
+}
+
+.loading-card-img {
+    width: 100px;
+    aspect-ratio: 1;
+    background: rgb(var(--SPOTIFY_GREY));
+}
+
+.loading-card-artist,
+.loading-card-title {
+    height: 1em;
+    background: rgb(var(--SPOTIFY_GREY));
+    border-radius: 1rem;
+}
+
+.loading-card-title {
+    width: 100%;
+}
+
+.loading-card-artist {
+    width: 60%;
 }
