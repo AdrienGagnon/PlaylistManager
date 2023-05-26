@@ -7,6 +7,7 @@ import TrackList from './TrackList/TrackList';
 import { useSelector } from 'react-redux';
 import fetchWebApi from '../Data/fetchWebApi';
 import { useEffect, useState } from 'react';
+import FooterMainView from '../components/FooterMainView';
 
 function PlaylistView(props) {
     const pageContent = useSelector(state => {
@@ -27,7 +28,7 @@ function PlaylistView(props) {
             setPlaylistInfo(await fetchWebApi(`v1/playlists/${id}`, 'GET'));
         }
     }
-    console.log('pagecontent', pageContent);
+
     return (
         <div className="main-view">
             {playlistInfo ? (
@@ -37,19 +38,16 @@ function PlaylistView(props) {
                         playlistInfo={playlistInfo}
                         option={props.option}
                     />
-                    {props.option !== 'lplplplaylist' && (
-                        <>
-                            <PlaybackControlsPlaylist
-                                pageContent={pageContent}
-                                playlistInfo={playlistInfo}
-                            />
-                            <TrackList
-                                pageContent={pageContent}
-                                playlistInfo={playlistInfo}
-                                option={props.option}
-                            />
-                        </>
-                    )}
+                    <PlaybackControlsPlaylist
+                        pageContent={pageContent}
+                        playlistInfo={playlistInfo}
+                    />
+                    <TrackList
+                        pageContent={pageContent}
+                        playlistInfo={playlistInfo}
+                        option={props.option}
+                    />
+                    <FooterMainView />
                 </>
             ) : (
                 <></>

@@ -32,6 +32,10 @@
     animation: fadeInImg 300ms forwards;
 }
 
+.cardPlaceholder {
+    padding: 1.6rem;
+}
+
 @keyframes fadeInImg {
     to {
         opacity: 1;

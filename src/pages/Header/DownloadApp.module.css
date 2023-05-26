@@ -23,3 +23,7 @@
     display: flex;
     align-items: center;
 }
+
+.download-link span:last-child {
+    white-space: nowrap;
+}

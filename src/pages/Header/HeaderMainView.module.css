@@ -13,11 +13,19 @@ header {
 }
 
 .header button,
-.header a span,
+.header a > span,
 .header > div:last-child {
     background: rgb(var(--background-base));
     border-radius: 2rem;
     padding: 0.5rem;
     border: none;
     cursor: pointer;
+}
+
+.profil-icon:hover {
+    scale: 1.05;
+}
+
+.profil-icon:hover svg {
+    fill: white;
 }

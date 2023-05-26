@@ -1,0 +1,10 @@
+@import url('../Constants/Constants.css');
+
+.footer-container {
+    height: 15rem;
+}
+
+.footer-border {
+    height: 60%;
+    border-bottom: rgb(var(--SPOTIFY_DARK_GREY)) solid 1px;
+}

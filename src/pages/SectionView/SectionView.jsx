@@ -1,30 +1,35 @@
 import { useSelector } from 'react-redux';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import styles from './SectionView.module.css';
 import Card from '../components/Card';
-import handleCardAmount from '../utils/handleCardAmount';
+import handleCardAmount from '../Logic/handleCardAmount';
+import FooterMainView from '../components/FooterMainView';
 
 function SectionView() {
-    const [cardAmount, setCardAmount] = useState(3);
     const listContainer = useRef();
     const pageContent = useSelector(state => {
         return state.pageContent.pageContent;
     });
+    const cardAmount = useSelector(state => {
+        return state.cardAmount.cardAmount;
+    });
 
     useEffect(() => {
-        if (!listContainer.current) return;
-        console.log('adding event');
-        handleCardAmount(listContainer, cardAmount, setCardAmount);
-        window.addEventListener('resize', () => {
-            handleCardAmount(listContainer, cardAmount, setCardAmount);
-        });
-    }, [listContainer?.current]);
-
-    useEffect(() => {
-        listContainer.current.style.gridTemplateColumns =
-            'repeat(cardAmount, 1fr);';
+        listContainer.current.style.gridTemplateColumns = `repeat(${cardAmount}, 1fr)`;
     }, [cardAmount]);
+
+    useEffect(() => {
+        handleCardAmount(listContainer);
+        window.addEventListener('resize', () => {
+            handleCardAmount(listContainer);
+        });
+        return () => {
+            window.removeEventListener('resize', () => {
+                handleCardAmount(listContainer);
+            });
+        };
+    }, []);
 
     function handleCardImgLoad() {}
 
@@ -48,6 +53,7 @@ function SectionView() {
                             );
                         })}
                     </div>
+                    <FooterMainView />
                 </div>
             )}
         </>

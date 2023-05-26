@@ -16,7 +16,7 @@ function ArtistNames(props) {
                 })
                 .reduce((prev, curr) => [
                     prev,
-                    <p>{props.divisionSymbol}</p>,
+                    <p key={props.divisionSymbol}>{props.divisionSymbol}</p>,
                     curr,
                 ])}
         </>
