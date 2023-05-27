@@ -25,3 +25,7 @@
     position: absolute;
     width: 16px;
 }
+
+.list-item-play-btn svg:nth-child(2) {
+    display: none;
+}

@@ -16,7 +16,7 @@ function SectionView() {
     });
 
     useEffect(() => {
-        listContainer.current.style.gridTemplateColumns = `repeat(${cardAmount}, 1fr)`;
+        listContainer.current.style.gridTemplateColumns = `repeat(${cardAmount}, minmax(0, 1fr))`;
     }, [cardAmount]);
 
     useEffect(() => {

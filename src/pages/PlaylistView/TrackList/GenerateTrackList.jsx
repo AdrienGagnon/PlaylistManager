@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import styles from './GenerateTrackList.module.css';
+import './GenerateTrackList.css';
 import AddDate from './AddDate';
 import TrackMainInfo from './TrackMainInfo';
 import TrackTitleAndArtist from './TrackTitleAndArtist';
@@ -21,15 +22,18 @@ function GenerateTrackList(props) {
                             key={item.track.name}
                             className={[
                                 styles['list-item-container'],
-                                styles[
-                                    item.track.name ===
-                                    currentTrack.currentTrack?.track.name
-                                        ? 'active-item'
-                                        : ''
-                                ],
+
+                                item.track.name ===
+                                currentTrack.currentTrack?.track.name
+                                    ? 'active-item'
+                                    : '',
                             ].join(' ')}
                         >
-                            <TrackNumber index={index} />
+                            <TrackNumber
+                                index={index}
+                                playlistInfo={props.playlistInfo}
+                                item={item}
+                            />
                             <TrackMainInfo item={item.track} />
                             <div className={styles['list-item-album']}>
                                 {item.track.album.name}
@@ -55,7 +59,11 @@ function GenerateTrackList(props) {
                                 styles['album-colomn-divisions'],
                             ].join(' ')}
                         >
-                            <TrackNumber index={index} />
+                            <TrackNumber
+                                index={index}
+                                playlistInfo={props.playlistInfo}
+                                item={item}
+                            />
                             <TrackTitleAndArtist item={item} />
                             <DurationTrack item={item} />
                         </li>

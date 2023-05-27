@@ -1,0 +1,12 @@
+.active-item div:nth-child(1) > span,
+.active-item > div:nth-child(2) > div > span {
+    color: rgb(var(--SPOTIFY_GREEN));
+}
+
+.active-item .active-button svg:nth-child(2) {
+    display: inline;
+}
+
+.active-item .active-button svg:nth-child(1) {
+    display: none;
+}

@@ -7,6 +7,7 @@
     width: auto;
     translate: 0 100%;
     animation: slideInImage 300ms forwards;
+    padding: 0;
 }
 
 @keyframes slideInImage {
