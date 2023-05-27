@@ -6,7 +6,11 @@ import { useEffect } from 'react';
 function CallBack() {
     setToken();
     useEffect(() => {
-        // window.location.href = '/';
+        // const timeoutID = setTimeout(() => {
+        //     window.location.href =
+        //         'https://playlist-manager-ag.netlify.app/Home';
+        // }, 5000);
+        return clearTimeout(timeoutID);
     }, []);
     return <div className={styles.container}>Loading content...</div>;
 }

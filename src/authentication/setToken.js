@@ -6,7 +6,7 @@ async function setToken() {
     let code = urlParams.get('code');
 
     //----- Request an access token -----//
-    codeVerifier = localStorage.getItem('code_verifier');
+    const codeVerifier = localStorage.getItem('code_verifier');
 
     let body = new URLSearchParams({
         grant_type: 'authorization_code',
