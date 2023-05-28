@@ -3,11 +3,17 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    max-width: 40rem;
 }
 
 .song-info span {
+    text-align: left;
     font-size: 1.2rem;
     cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .song-info span:hover {

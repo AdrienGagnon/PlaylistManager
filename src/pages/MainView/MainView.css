@@ -14,6 +14,7 @@
     animation: fadeOut 300ms ease-in-out forwards;
     animation-delay: 1s;
     overflow-y: overlay;
+    overflow-x: hidden;
 }
 
 .main-view:hover {

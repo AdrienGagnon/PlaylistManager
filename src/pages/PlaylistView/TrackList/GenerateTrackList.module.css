@@ -26,7 +26,8 @@
     opacity: 1;
 }
 
-.list-item-container div {
+.list-item-container div,
+.list-item-container a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -48,6 +49,10 @@
 
 .list-item-container:hover > div > div > div > span {
     color: white;
+}
+
+.list-item-album {
+    text-decoration: none;
 }
 
 .list-item-album:hover {

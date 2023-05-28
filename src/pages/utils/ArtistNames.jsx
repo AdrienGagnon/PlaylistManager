@@ -1,4 +1,7 @@
+import { NavLink } from 'react-router-dom';
+
 import styles from './ArtistNames.module.css';
+import handleSetPageContent from '../Logic/handleSetPageContent';
 
 function ArtistNames(props) {
     return (
@@ -6,12 +9,14 @@ function ArtistNames(props) {
             {props.item.artists
                 .map((artist, index) => {
                     return (
-                        <span
+                        <NavLink
+                            to={'/artist'}
+                            onClick={() => handleSetPageContent(artist)}
                             key={index}
                             className={styles['list-item-info-artist']}
                         >
                             {artist.name}
-                        </span>
+                        </NavLink>
                     );
                 })
                 .reduce((prev, curr) => [

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import handleResumeTrack from '../../Logic/handleResumeTrack';
 
-function PlaybackControlsPlaylist() {
+function PlaybackControlsPlaylist(props) {
     const pageContent = useSelector(state => {
         return state.pageContent.pageContent;
     });
@@ -12,6 +12,9 @@ function PlaybackControlsPlaylist() {
     const currentTrack = useSelector(state => {
         return state.currentTrack;
     });
+
+    // Used for handleResumeTrack
+    const type = props.option === 'playlist' ? 'playlists' : 'albums';
 
     return (
         <div className={styles['play-btn-container']}>
@@ -22,7 +25,7 @@ function PlaybackControlsPlaylist() {
                 className={styles['play-button']}
                 onClick={e => {
                     e.stopPropagation();
-                    handleResumeTrack(pageContent);
+                    handleResumeTrack(pageContent, 0, undefined, type);
                 }}
             >
                 <span aria-hidden="true">

@@ -10,7 +10,7 @@ function TrackMainInfo(props) {
                 src={props.item.album.images[2].url}
                 alt="playlist-img"
             />
-            <TrackTitleAndArtist item={props.item} />
+            <TrackTitleAndArtist item={props.item} type={'playlist'} />
         </div>
     );
 }

@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
-import styles from './GenerateTrackList.module.css';
 import './GenerateTrackList.css';
+import styles from './GenerateTrackList.module.css';
 import AddDate from './AddDate';
 import TrackMainInfo from './TrackMainInfo';
 import TrackTitleAndArtist from './TrackTitleAndArtist';
 import TrackNumber from './TrackNumber';
 import DurationTrack from './DurationTrack';
+import handleSetPageContent from '../../Logic/handleSetPageContent';
 
 function GenerateTrackList(props) {
     const currentTrack = useSelector(state => {
@@ -35,9 +37,15 @@ function GenerateTrackList(props) {
                                 item={item}
                             />
                             <TrackMainInfo item={item.track} />
-                            <div className={styles['list-item-album']}>
+                            <NavLink
+                                to={'/album'}
+                                onClick={() =>
+                                    handleSetPageContent(item.track.album)
+                                }
+                                className={styles['list-item-album']}
+                            >
                                 {item.track.album.name}
-                            </div>
+                            </NavLink>
                             <AddDate item={item} />
                             <DurationTrack item={item.track} />
                         </li>

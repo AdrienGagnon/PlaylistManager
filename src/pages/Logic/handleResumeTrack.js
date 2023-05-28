@@ -4,13 +4,19 @@ import { currentTrackActions } from '../../store/currentTrack-slice';
 
 import store from '../../store';
 
-function handleResumeTrack(item, trackPosition = 0, track = undefined) {
+function handleResumeTrack(
+    item,
+    trackPosition = 0,
+    track = undefined,
+    type = 'playlists'
+) {
     const sameTrack =
         track &&
-        store.getState().currentTrack.currentTrack.track.id === track.track.id
+        store.getState().currentTrack.currentTrack?.track?.id ===
+            track?.track?.id
             ? true
             : false;
-    console.log(track);
+
     if (
         store.getState().currentTrack.currentPlaylist?.id === item.id &&
         sameTrack
@@ -19,7 +25,7 @@ function handleResumeTrack(item, trackPosition = 0, track = undefined) {
             ? store.dispatch(currentTrackActions.stopCurrentTrack())
             : store.dispatch(currentTrackActions.playCurrentTrack());
     } else {
-        handlePlayNewTrack(item, trackPosition);
+        handlePlayNewTrack(item, trackPosition, type);
     }
 }
 

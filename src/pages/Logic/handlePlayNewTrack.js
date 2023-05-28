@@ -6,12 +6,13 @@ import shuffle from '../utils/shuffle';
 
 import fetchWebApi from '../Data/fetchWebApi';
 
-function handlePlayNewTrack(item, trackPosition = 0) {
+function handlePlayNewTrack(item, trackPosition = 0, type = 'playlists') {
     // Change the playlist state if necessary
     if (store.getState().currentTrack.currentPlaylist?.id !== item.id) {
         store.dispatch(currentTrackActions.newCurrentPlaylist(item));
 
-        fetchWebApi(`v1/playlists/${item.id}/tracks`, 'GET').then(e => {
+        fetchWebApi(`v1/${type}/${item.id}/tracks`, 'GET').then(e => {
+            console.log(e.items ? e.items : e.tracks.items);
             let shuffleArray;
             const shuffleState = store.getState().playlistPlaybackOrder.shuffle;
             // Set the tracks of the playlist
@@ -30,14 +31,20 @@ function handlePlayNewTrack(item, trackPosition = 0) {
                 );
             } else {
                 store.dispatch(
-                    currentTrackActions.newCurrentPlaylistTracks(e.items)
+                    currentTrackActions.newCurrentPlaylistTracks(
+                        e.items ? e.items : e.tracks.items
+                    )
                 );
             }
 
             // Sets the current track
             store.dispatch(
                 currentTrackActions.newCurrentTrack({
-                    track: shuffleState ? shuffleArray : e.items,
+                    track: shuffleState
+                        ? shuffleArray
+                        : e.items
+                        ? e.items
+                        : e.tracks.items,
                     trackPosition: trackPosition,
                 })
             );

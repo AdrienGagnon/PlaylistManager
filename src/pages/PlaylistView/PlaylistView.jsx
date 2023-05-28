@@ -1,37 +1,43 @@
-import styles from './PlaylistView.module.css';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { newContentReceivedActions } from '../../store/newContentReceived';
 import HeaderPlaylist from './Header/HeaderPlaylist';
 import PlaybackControlsPlaylist from './PlaybackContainer/PlaybackControlsPlaylist';
 import TrackList from './TrackList/TrackList';
-
-import { useSelector } from 'react-redux';
 import fetchWebApi from '../Data/fetchWebApi';
-import { useEffect, useState } from 'react';
 import FooterMainView from '../components/FooterMainView';
 
 function PlaylistView(props) {
     const pageContent = useSelector(state => {
         return state.pageContent.pageContent;
     });
+    const newContentReceived = useSelector(state => {
+        return state.newContentReceived.newContentReceived;
+    });
     const [playlistInfo, setPlaylistInfo] = useState();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!pageContent) return;
         getPlaylistInfo(pageContent.id);
-        return setPlaylistInfo(undefined);
     }, [pageContent]);
 
+    useEffect(() => {
+        // Waits for the new content to be set in playlistInfo, else the old content will be displayed with errors
+        if (!playlistInfo) return;
+        dispatch(newContentReceivedActions.toggleNewContentReceived(true));
+    }, [playlistInfo]);
+
     async function getPlaylistInfo(id) {
-        if (props.option === 'album') {
-            setPlaylistInfo(await fetchWebApi(`v1/albums/${id}`, 'GET'));
-        } else if (props.option === 'playlist') {
-            setPlaylistInfo(await fetchWebApi(`v1/playlists/${id}`, 'GET'));
-        }
+        await fetchWebApi(`v1/${props.option}s/${id}`, 'GET').then(content => {
+            setPlaylistInfo(content);
+        });
     }
 
     return (
         <div className="main-view">
-            {playlistInfo ? (
+            {playlistInfo && newContentReceived ? (
                 <>
                     <HeaderPlaylist
                         pageContent={pageContent}
@@ -41,6 +47,7 @@ function PlaylistView(props) {
                     <PlaybackControlsPlaylist
                         pageContent={pageContent}
                         playlistInfo={playlistInfo}
+                        option={props.option}
                     />
                     <TrackList
                         pageContent={pageContent}

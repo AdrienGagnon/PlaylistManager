@@ -23,7 +23,6 @@
     margin-right: 5px;
 }
 
-.list-item-info-artist:hover,
 .list-item-info-track-name:hover,
 .list-item-album:hover {
     text-decoration: underline;
@@ -32,4 +31,5 @@
 
 .list-item-info-track-name {
     color: white;
+    text-decoration: none;
 }

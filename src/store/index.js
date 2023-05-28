@@ -8,6 +8,7 @@ import pageContentReducer from './pageContent-slice';
 import trackTimeReducer from './trackTime-slice';
 import userInfoReducer from './userInfo-slice';
 import cardAmountReducer from './cardAmount-slice';
+import newContentReceivedReducer from './newContentReceived';
 
 const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
         trackTime: trackTimeReducer,
         userInfo: userInfoReducer,
         cardAmount: cardAmountReducer,
+        newContentReceived: newContentReceivedReducer,
     },
 });
 
