@@ -9,6 +9,7 @@ import trackTimeReducer from './trackTime-slice';
 import userInfoReducer from './userInfo-slice';
 import cardAmountReducer from './cardAmount-slice';
 import newContentReceivedReducer from './newContentReceived';
+import searchReducer from './search-slice';
 
 const store = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
         userInfo: userInfoReducer,
         cardAmount: cardAmountReducer,
         newContentReceived: newContentReceivedReducer,
+        search: searchReducer,
     },
 });
 

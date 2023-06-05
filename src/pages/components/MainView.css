@@ -1,11 +1,5 @@
 @import url('../Constants/Constants.css');
 
-.welcome-message {
-    text-align: left;
-    margin-block: 7rem 2rem;
-    font-size: 3rem;
-}
-
 .main-view {
     grid-area: main-view;
     padding-inline: 1rem;

@@ -6,7 +6,7 @@ import CallBack from './authentication/Callback';
 
 import MainContent from './pages/MainContent/MainContent';
 
-import MainView from './pages/MainView/MainView';
+import Home from './pages/HomeView/Home';
 import Search from './pages/Search/Search';
 import PlaylistView from './pages/PlaylistView/PlaylistView';
 import SectionView from './pages/SectionView/SectionView';
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/Home',
-                element: <MainView />,
+                element: <Home />,
             },
             {
                 path: '/search',

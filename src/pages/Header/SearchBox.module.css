@@ -1,0 +1,64 @@
+@import url('../Constants/Constants.css');
+
+.search-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: rgb(var(--SPOTIFY_DARK_GREY));
+    border-radius: 2rem;
+    border: none;
+    flex: 0 1 360px;
+    min-width: 200px;
+}
+
+.search-container svg {
+    margin-inline: 1rem;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.input-container {
+    position: absolute;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.input-container:hover input {
+    outline: 2px rgb(var(--SPOTIFY_GREY)) solid;
+}
+
+.input-container input:focus,
+.input-container input:active {
+    outline: 3px white solid;
+}
+
+.search-container input {
+    margin-right: 1rem;
+    background: none;
+    border: none;
+    text-align: start;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding-left: 36px;
+    height: 100%;
+    align-self: stretch;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+input::placeholder {
+    color: rgb(var(--SPOTIFY_GREY));
+    opacity: 1;
+}
+
+input:-ms-input-placeholder {
+    color: rgb(var(--SPOTIFY_GREY));
+}
+
+input::-ms-input-placeholder {
+    color: rgb(var(--SPOTIFY_GREY));
+}

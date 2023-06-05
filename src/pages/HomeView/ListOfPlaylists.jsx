@@ -80,7 +80,7 @@ function ListOfPlaylists(props) {
                             }
                             return (
                                 <Card
-                                    key={item.name}
+                                    key={item.id}
                                     item={item}
                                     playlistContent={props.playlistContent}
                                     handleCardImgLoad={handleCardImgLoad}

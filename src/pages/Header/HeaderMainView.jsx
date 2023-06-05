@@ -1,12 +1,14 @@
 import styles from './HeaderMainView.module.css';
 import './HeaderMainView.css';
 import ArrowsHeader from './ArrowsHeader';
+import SearchBox from './SearchBox';
 import DownloadApp from './DownloadApp';
 
 function HeaderMainView() {
     return (
         <header className={styles.header}>
             <ArrowsHeader />
+            <SearchBox />
             <DownloadApp />
             <div className={styles['profil-icon']}>
                 <svg

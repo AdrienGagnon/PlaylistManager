@@ -1,30 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useRef } from 'react';
 
-import './MainView.css';
-import handleCardAmount from '../Logic/handleCardAmount';
+import styles from './Home.module.css';
 import fetchWebApi from '../Data/fetchWebApi';
 import PlaylistItem from './PlaylistItem';
 import FooterMainView from '../components/FooterMainView';
+import MainView from '../components/MainView';
 
-function MainView() {
+function Home() {
     const [profileInfo, setProfileInfo] = useState([]);
     const [accessToken, setAccessToken] = useState();
-    const mainView = useRef();
 
     useEffect(() => {
         const accessToken = localStorage.getItem('access_token');
         setAccessToken(accessToken);
-
-        handleCardAmount(mainView);
-        window.addEventListener('resize', () => {
-            handleCardAmount(mainView);
-        });
-        return () => {
-            window.removeEventListener('resize', () => {
-                handleCardAmount(mainView);
-            });
-        };
     }, []);
 
     // When token is in state, get data
@@ -37,8 +25,8 @@ function MainView() {
     }
 
     return (
-        <div className="main-view" ref={mainView}>
-            <h1 className="welcome-message">
+        <MainView>
+            <h1 className={styles['welcome-message']}>
                 Bonjour, {profileInfo.display_name}
             </h1>
             <ul>
@@ -74,8 +62,8 @@ function MainView() {
                 ></PlaylistItem>
             </ul>
             <FooterMainView />
-        </div>
+        </MainView>
     );
 }
 
-export default MainView;
+export default Home;

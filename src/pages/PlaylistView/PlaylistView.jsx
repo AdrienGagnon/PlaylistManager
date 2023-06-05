@@ -35,6 +35,14 @@ function PlaylistView(props) {
         });
     }
 
+    // if previous is used and newContentReceived failed to block the propagation
+    if (props.option === 'playlist' && pageContent?.album_type) {
+        return <></>;
+    }
+    if (props.option === 'album' && pageContent?.owner) {
+        return <></>;
+    }
+
     return (
         <div className="main-view">
             {playlistInfo && newContentReceived ? (

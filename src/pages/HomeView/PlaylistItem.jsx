@@ -14,11 +14,18 @@ function PlaylistItem(props) {
     });
 
     useEffect(() => {
+        if (!props.objectType) return;
         getPlaylistContent();
     }, [props.accessToken]);
 
     useEffect(() => {
+        if (!props.content) return;
+        setPlaylistContent(props.content);
+    }, [props.content]);
+
+    useEffect(() => {
         if (!userPlaylists) return;
+        if (!props.objectType) return;
         props.objectType === 'UserPlaylists' &&
             setPlaylistContent({
                 items: userPlaylists.items,
@@ -77,7 +84,6 @@ function PlaylistItem(props) {
             </div>
             {/* TODO: Handle content empty */}
             <PlaylistContent
-                accessToken={props.accessToken}
                 type={props.type}
                 objectType={props.objectType}
                 playlistContent={playlistContent}
