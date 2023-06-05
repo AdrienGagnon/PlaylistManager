@@ -27,7 +27,14 @@ function CardImg(props) {
                     onClick={e => {
                         e.preventDefault();
                         e.stopPropagation();
-                        handleResumeTrack(props.item);
+                        handleResumeTrack(
+                            props.item,
+                            0,
+                            undefined,
+                            props.linkTo === '/playlist'
+                                ? 'playlists'
+                                : 'albums'
+                        );
                     }}
                 >
                     <span aria-hidden="true">

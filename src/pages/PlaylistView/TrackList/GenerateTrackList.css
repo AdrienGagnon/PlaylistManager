@@ -1,5 +1,6 @@
 .active-item div:nth-child(1) > span,
-.active-item > div:nth-child(2) > div > span {
+.active-item > div:nth-child(2) > div > span,
+.active-item > div:nth-child(2) > span {
     color: rgb(var(--SPOTIFY_GREEN));
 }
 

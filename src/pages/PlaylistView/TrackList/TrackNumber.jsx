@@ -6,20 +6,20 @@ function TrackNumber(props) {
     const playState = useSelector(state => {
         return state.currentTrack.playState;
     });
-
     return (
         <div className={styles['list-item-number-container']}>
             <span className={styles['list-item-number']}>
                 {props.index + 1}
             </span>
             <button
-                onClick={() =>
+                onClick={() => {
                     handleResumeTrack(
                         props.playlistInfo,
                         props.index,
-                        props.item
-                    )
-                }
+                        props.item,
+                        props.type
+                    );
+                }}
                 className={[
                     styles['list-item-play-btn'],
                     playState ? 'active-button' : '',

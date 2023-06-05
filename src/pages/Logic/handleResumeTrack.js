@@ -10,13 +10,20 @@ function handleResumeTrack(
     track = undefined,
     type = 'playlists'
 ) {
-    const sameTrack =
-        track &&
-        store.getState().currentTrack.currentTrack?.track?.id ===
-            track?.track?.id
-            ? true
-            : false;
-
+    const sameTrack = track ? SameTrackCheck() : true;
+    function SameTrackCheck() {
+        if (type === 'playlists') {
+            return store.getState().currentTrack.currentTrack?.track?.id ===
+                track?.track?.id
+                ? true
+                : false;
+        }
+        if (type === 'albums') {
+            return store.getState().currentTrack.currentTrack?.id === track?.id
+                ? true
+                : false;
+        }
+    }
     if (
         store.getState().currentTrack.currentPlaylist?.id === item.id &&
         sameTrack

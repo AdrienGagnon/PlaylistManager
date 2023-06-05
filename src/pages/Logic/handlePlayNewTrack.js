@@ -12,7 +12,6 @@ function handlePlayNewTrack(item, trackPosition = 0, type = 'playlists') {
         store.dispatch(currentTrackActions.newCurrentPlaylist(item));
 
         fetchWebApi(`v1/${type}/${item.id}/tracks`, 'GET').then(e => {
-            console.log(e.items ? e.items : e.tracks.items);
             let shuffleArray;
             const shuffleState = store.getState().playlistPlaybackOrder.shuffle;
             // Set the tracks of the playlist

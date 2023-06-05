@@ -11,6 +11,8 @@
     padding: 0 16px;
     align-items: center;
     height: 5.6rem;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .album-colomn-divisions.list-item-container {

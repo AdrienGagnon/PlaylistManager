@@ -3,7 +3,6 @@ import './Nav.css';
 import NavButtons from './NavButtons';
 import NavBiblio from './Biblio/NavBiblio';
 import NavFavorites from './NavFavorites/NavFavorites';
-import CurrentTrackImage from './CurrentTrackImage';
 import { useEffect, useRef, useState } from 'react';
 
 const Nav = () => {
@@ -26,7 +25,6 @@ const Nav = () => {
             <NavButtons />
             <NavBiblio filter={filter} setFilter={setFilter} />
             <NavFavorites filter={filter} />
-            <CurrentTrackImage />
         </nav>
     );
 };

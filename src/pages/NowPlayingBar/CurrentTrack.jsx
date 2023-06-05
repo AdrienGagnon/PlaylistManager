@@ -4,22 +4,24 @@ import { useSelector } from 'react-redux';
 
 function CurrentTrack() {
     const currentTrackInfo = useSelector(state => {
-        return state.currentTrack;
+        return state.currentTrack.currentTrack?.track
+            ? state.currentTrack.currentTrack.track
+            : state.currentTrack.currentTrack;
     });
 
     return (
         <>
             <div className={styles['song-info']}>
-                <span>{currentTrackInfo.currentTrack?.track.name}</span>
+                <span>{currentTrackInfo?.name}</span>
                 <span>
-                    {currentTrackInfo.currentTrack?.track.artists
+                    {currentTrackInfo?.artists
                         .map(artist => {
                             return artist.name;
                         })
                         .join(', ')}
                 </span>
             </div>
-            {currentTrackInfo.currentTrack && (
+            {currentTrackInfo && (
                 <>
                     <button
                         type="button"

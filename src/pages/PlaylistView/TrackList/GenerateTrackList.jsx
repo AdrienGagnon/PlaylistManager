@@ -12,7 +12,9 @@ import handleSetPageContent from '../../Logic/handleSetPageContent';
 
 function GenerateTrackList(props) {
     const currentTrack = useSelector(state => {
-        return state.currentTrack;
+        return state.currentTrack.track
+            ? state.currentTrack.track
+            : state.currentTrack;
     });
 
     return (
@@ -24,9 +26,8 @@ function GenerateTrackList(props) {
                             key={item.track.name}
                             className={[
                                 styles['list-item-container'],
-
                                 item.track.name ===
-                                currentTrack.currentTrack?.track.name
+                                currentTrack.currentTrack?.track?.name
                                     ? 'active-item'
                                     : '',
                             ].join(' ')}
@@ -35,6 +36,7 @@ function GenerateTrackList(props) {
                                 index={index}
                                 playlistInfo={props.playlistInfo}
                                 item={item}
+                                type={'playlists'}
                             />
                             <TrackMainInfo item={item.track} />
                             <NavLink
@@ -58,12 +60,9 @@ function GenerateTrackList(props) {
                             key={item.name}
                             className={[
                                 styles['list-item-container'],
-                                styles[
-                                    item.name ===
-                                    currentTrack.currentTrack?.track.name
-                                        ? 'active-item'
-                                        : ''
-                                ],
+                                item.name === currentTrack.currentTrack?.name
+                                    ? 'active-item'
+                                    : '',
                                 styles['album-colomn-divisions'],
                             ].join(' ')}
                         >
@@ -71,6 +70,7 @@ function GenerateTrackList(props) {
                                 index={index}
                                 playlistInfo={props.playlistInfo}
                                 item={item}
+                                type={'albums'}
                             />
                             <TrackTitleAndArtist item={item} />
                             <DurationTrack item={item} />

@@ -19,7 +19,9 @@ function ProgressBar() {
     });
 
     const totalTrackTime = useSelector(state => {
-        return state.currentTrack.currentTrack?.track.duration_ms;
+        return state.currentTrack.currentTrack?.track
+            ? state.currentTrack.currentTrack?.track.duration_ms
+            : state.currentTrack.currentTrack?.duration_ms;
     });
 
     useEffect(() => {
