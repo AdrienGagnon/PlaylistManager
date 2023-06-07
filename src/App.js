@@ -11,6 +11,7 @@ import Search from './pages/Search/Search';
 import PlaylistView from './pages/PlaylistView/PlaylistView';
 import SectionView from './pages/SectionView/SectionView';
 import LoggingIn from './pages/LoggingIn/LoggingIn';
+import GenreView from './pages/GenreView/GenreView';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/section',
                 element: <SectionView />,
+            },
+            {
+                path: '/genre',
+                element: <GenreView />,
             },
         ],
     },

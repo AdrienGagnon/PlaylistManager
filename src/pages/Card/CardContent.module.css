@@ -1,0 +1,5 @@
+@import url('../Constants/Constants.css');
+
+.artist-names {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+}

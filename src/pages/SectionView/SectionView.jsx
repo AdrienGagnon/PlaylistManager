@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import { useRef, useEffect } from 'react';
 
 import styles from './SectionView.module.css';
-import Card from '../components/Card';
+import Card from '../Card/Card';
+import CardContent from '../Card/CardContent';
 import handleCardAmount from '../Logic/handleCardAmount';
 import FooterMainView from '../components/FooterMainView';
 
@@ -16,6 +17,7 @@ function SectionView() {
     });
 
     useEffect(() => {
+        if (!listContainer.current?.style) return;
         listContainer.current.style.gridTemplateColumns = `repeat(${cardAmount}, minmax(0, 1fr))`;
     }, [cardAmount]);
 
@@ -33,6 +35,11 @@ function SectionView() {
 
     function handleCardImgLoad() {}
 
+    if (!pageContent?.content)
+        return (
+            <>Une erreur est survenue. Veuillez revenir au menu principal.</>
+        );
+
     return (
         <>
             {pageContent && (
@@ -43,13 +50,19 @@ function SectionView() {
                         ref={listContainer}
                     >
                         {pageContent.content.items.map(item => {
+                            item = item.album ? item.album : item;
                             return (
                                 <Card
                                     key={item.name}
                                     item={item}
-                                    playlistContent={pageContent.content}
-                                    handleCardImgLoad={handleCardImgLoad}
-                                />
+                                    linkTo={pageContent.content.linkTo}
+                                >
+                                    <CardContent
+                                        item={item}
+                                        playlistContent={pageContent.content}
+                                        handleCardImgLoad={handleCardImgLoad}
+                                    />
+                                </Card>
                             );
                         })}
                     </div>

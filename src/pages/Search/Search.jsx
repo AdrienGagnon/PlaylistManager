@@ -5,6 +5,7 @@ import { searchActions } from '../../store/search-slice';
 import styles from './Search.module.css';
 import PlaylistItem from '../HomeView/PlaylistItem';
 import MainView from '../components/MainView';
+import SearchDefault from './SearchDefault';
 
 function Search() {
     const dispatch = useDispatch();
@@ -13,12 +14,14 @@ function Search() {
     });
 
     useEffect(() => {
+        // Shows the search bar in the header
         dispatch(searchActions.showDisplay(true));
         return hideSearch;
     }, []);
 
     function hideSearch() {
         dispatch(searchActions.showDisplay(false));
+        dispatch(searchActions.updateResults(undefined));
     }
 
     return (
@@ -30,7 +33,7 @@ function Search() {
                         content={searchResults.albums}
                     />
                 ) : (
-                    <></>
+                    <SearchDefault />
                 )}
             </ul>
         </MainView>

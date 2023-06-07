@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import styles from './ListOfPlaylists.module.css';
-import Card from '../components/Card';
+import Card from '../Card/Card';
+import CardContent from '../Card/CardContent';
 
 function ListOfPlaylists(props) {
     const [imgLoaded, setImgLoaded] = useState(false);
@@ -82,9 +83,14 @@ function ListOfPlaylists(props) {
                                 <Card
                                     key={item.id}
                                     item={item}
-                                    playlistContent={props.playlistContent}
-                                    handleCardImgLoad={handleCardImgLoad}
-                                />
+                                    linkTo={props.playlistContent.linkTo}
+                                >
+                                    <CardContent
+                                        item={item}
+                                        playlistContent={props.playlistContent}
+                                        handleCardImgLoad={handleCardImgLoad}
+                                    />
+                                </Card>
                             );
                         })}
                 {placeholderAmount}

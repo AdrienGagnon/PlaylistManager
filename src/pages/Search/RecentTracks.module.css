@@ -1,0 +1,11 @@
+.recent-items-container {
+    display: flex;
+    min-height: 204px;
+    width: 100%;
+    gap: 24px;
+}
+
+.recent-items-container > * {
+    width: 0;
+    flex: 1 1 0;
+}

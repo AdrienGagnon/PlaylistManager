@@ -20,7 +20,10 @@ function PlaylistItem(props) {
 
     useEffect(() => {
         if (!props.content) return;
-        setPlaylistContent(props.content);
+        setPlaylistContent({
+            items: props.content.items,
+            linkTo: props.title === 'Albums' ? '/album' : '/playlist',
+        });
     }, [props.content]);
 
     useEffect(() => {
@@ -69,7 +72,17 @@ function PlaylistItem(props) {
     return (
         <li className={[props.objectType, 'playlistitem'].join(' ')}>
             <div>
-                <h2>{props.title}</h2>
+                <NavLink
+                    onClick={() =>
+                        handleSetPageContent({
+                            title: props.title,
+                            content: playlistContent,
+                        })
+                    }
+                    to={'/section'}
+                >
+                    {props.title}
+                </NavLink>
                 <NavLink
                     onClick={() =>
                         handleSetPageContent({

@@ -12,7 +12,11 @@ function CardImg(props) {
         <div className={styles['img-playlist-container']}>
             <img
                 className={styles['img-playlist-list']}
-                src={props.item.images[0]?.url}
+                src={
+                    props.item.images
+                        ? props.item.images[0]?.url
+                        : props.item.album.images[0].url
+                }
                 alt=""
                 onLoad={() => {
                     props.handleCardImgLoad();

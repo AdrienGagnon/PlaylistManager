@@ -1,0 +1,16 @@
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+.img-category-container {
+    position: relative;
+}
+
+.img-category {
+    width: 100%;
+    aspect-ratio: 1;
+}

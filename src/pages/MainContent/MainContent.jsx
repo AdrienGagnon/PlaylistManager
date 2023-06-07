@@ -15,8 +15,10 @@ import './MainContent.css';
 import Nav from '../Navigation/Nav';
 import HeaderMainView from '../Header/HeaderMainView';
 import NowPlayingBar from '../NowPlayingBar/NowPlayingBar';
+import AlertModal from '../AlertModal/AlertModal';
 
 function MainContent() {
+    const [expired, setExpired] = useState(false);
     const [accessToken, setAccessToken] = useState();
 
     const dispatch = useDispatch();
@@ -38,7 +40,7 @@ function MainContent() {
         updateUserPlaylists();
         isPageContentEmpty();
         setTimeout(() => {
-            console.log('le token a expire');
+            setExpired(true);
         }, 59 * 60 * 1000);
     }, []);
 
@@ -49,6 +51,7 @@ function MainContent() {
             <Nav />
             <Outlet context={[accessToken, setAccessToken]} />
             <NowPlayingBar />
+            {expired && <AlertModal />}
         </div>
     );
 }

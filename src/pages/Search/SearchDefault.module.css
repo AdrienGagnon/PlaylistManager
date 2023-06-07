@@ -1,36 +1,47 @@
-@import url('../Constants/Constants.css');
-
-.playlistitem {
+.recent-container,
+.all-container {
+    list-style: none;
     font-size: 1.6rem;
     text-overflow: ellipsis;
     list-style: none;
     position: relative;
 }
 
-.playlistitem > div {
+.recent-container {
+}
+
+.all-container {
+}
+
+.playlistitem {
+}
+
+.recent-container > div:nth-child(1),
+.all-container > div:nth-child(1) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-right: 2rem;
 }
 
-.playlistitem > div a:first-child {
+.recent-container > div:nth-child(1) a:nth-child(1),
+.all-container > div:nth-child(1) {
     font-size: 2rem;
     font-weight: 700;
     text-align: left;
     margin-block: 1rem;
 }
 
-.playlistitem > div a:nth-child(2) {
+.recent-container > div:nth-child(1) a:nth-child(2) {
     margin-left: 0.5rem;
 }
 
-.playlistitem > div a {
+.recent-container > div:nth-child(1) a {
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
 }
 
-.playlistitem > div a:hover {
+.recent-container > div:nth-child(1) a:hover {
     text-decoration: underline;
 }
