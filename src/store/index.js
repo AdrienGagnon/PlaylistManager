@@ -10,6 +10,7 @@ import userInfoReducer from './userInfo-slice';
 import cardAmountReducer from './cardAmount-slice';
 import newContentReceivedReducer from './newContentReceived';
 import searchReducer from './search-slice';
+import homeContentReducer from './homeContent-slice';
 
 const store = configureStore({
     reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
         cardAmount: cardAmountReducer,
         newContentReceived: newContentReceivedReducer,
         search: searchReducer,
+        homeContent: homeContentReducer,
     },
 });
 

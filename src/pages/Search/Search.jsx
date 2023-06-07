@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { searchActions } from '../../store/search-slice';
 import styles from './Search.module.css';
-import PlaylistItem from '../HomeView/PlaylistItem';
+import PlaylistItem from '../SectionCards/CardsSection';
 import MainView from '../components/MainView';
 import SearchDefault from './SearchDefault';
 

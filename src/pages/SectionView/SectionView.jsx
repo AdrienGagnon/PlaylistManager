@@ -50,16 +50,24 @@ function SectionView() {
                         ref={listContainer}
                     >
                         {pageContent.content.items.map(item => {
-                            item = item.album ? item.album : item;
+                            const linkTo =
+                                item.album || item.album_type
+                                    ? '/album'
+                                    : '/playlist';
                             return (
                                 <Card
-                                    key={item.name}
+                                    key={
+                                        item.name
+                                            ? item.name
+                                            : item.album
+                                            ? item.album.id
+                                            : item.id
+                                    }
                                     item={item}
-                                    linkTo={pageContent.content.linkTo}
+                                    linkTo={linkTo}
                                 >
                                     <CardContent
                                         item={item}
-                                        playlistContent={pageContent.content}
                                         handleCardImgLoad={handleCardImgLoad}
                                     />
                                 </Card>

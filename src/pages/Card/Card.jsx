@@ -3,16 +3,18 @@ import { NavLink } from 'react-router-dom';
 import styles from './Card.module.css';
 import handleSetPageContent from '../Logic/handleSetPageContent';
 
-// Requires the following arguments:
-// item={item} (this card content)
-// linkTo={props.linkTo}
-
 function Card(props) {
+    const content = props.item.playlists
+        ? props.item.playlists
+        : props.item.album
+        ? props.item.album
+        : props.item;
+
     return (
         <NavLink
-            onClick={() => handleSetPageContent(props.item)}
+            onClick={() => handleSetPageContent(content)}
             to={props.linkTo}
-            key={props.item.name}
+            key={content.name}
             className={[
                 styles['card'],
                 props.linkTo === '/artist' ? styles['artist'] : '',

@@ -1,36 +1,40 @@
 @import url('../Constants/Constants.css');
 
-.playlistitem {
+.cards-section {
     font-size: 1.6rem;
     text-overflow: ellipsis;
     list-style: none;
     position: relative;
 }
 
-.playlistitem > div {
+.cards-section > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-right: 2rem;
 }
 
-.playlistitem > div a:first-child {
+.cards-section > div a:first-child {
     font-size: 2rem;
     font-weight: 700;
     text-align: left;
     margin-block: 1rem;
 }
 
-.playlistitem > div a:nth-child(2) {
+.cards-section > div a:nth-child(2) {
     margin-left: 0.5rem;
 }
 
-.playlistitem > div a {
+.cards-section > div a {
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
 }
 
-.playlistitem > div a:hover {
+.cards-section > div a.disabled {
+    pointer-events: none;
+}
+
+.cards-section > div a:hover {
     text-decoration: underline;
 }

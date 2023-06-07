@@ -1,6 +1,5 @@
 @import url('../Constants/Constants.css');
 
-.real-cards-container,
 .loading-card-container {
     display: flex;
     gap: 24px;
@@ -8,32 +7,24 @@
     width: 100%;
 }
 
-.real-cards-container > *,
 .loading-card-container > * {
     width: 0;
     flex: 1 1 0;
 }
 
-.loading-card-container.hidden,
-.real-cards-container.hidden {
+.loading-card-container.hidden {
     display: none;
 }
 
-.card,
 .loading-card-container > div {
     padding: 1.6rem;
     background-color: #181818;
     border-radius: 1rem;
     transition: background-color 0.3s ease;
-    cursor: pointer;
     text-decoration: none;
     max-width: 250px;
     opacity: 0;
     animation: fadeInImg 300ms forwards;
-}
-
-.cardPlaceholder {
-    padding: 1.6rem;
 }
 
 @keyframes fadeInImg {
@@ -41,33 +32,6 @@
         opacity: 1;
     }
 }
-
-.card:hover {
-    background-color: #282828;
-}
-
-.card p {
-    margin-block: 1rem;
-    text-align: left;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.card:hover button {
-    opacity: 1;
-    bottom: 8px;
-}
-
-.artist img {
-    border-radius: 100%;
-}
-
-.artist-names {
-    color: rgb(var(--SPOTIFY_LIGHT_GREY));
-}
-
-/* Loading Cards */
 
 .loading-card-container > div {
     display: flex;

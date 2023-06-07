@@ -2,24 +2,24 @@ import styles from './CardContent.module.css';
 import CardImg from './CardImg';
 
 function CardContent(props) {
+    const content = props.item.album ? props.item.album : props.item;
     return (
         <>
             <CardImg
-                item={props.item}
-                linkTo={props.playlistContent.linkTo}
+                item={content}
+                linkTo={props.linkTo}
                 handleCardImgLoad={props.handleCardImgLoad}
             />
-            <p>{props.item.name}</p>
+            <p>{content.name}</p>
             <p className={styles['artist-names']}>
-                {props.playlistContent.linkTo === '/album' &&
-                    props.item.artists
+                {props.linkTo === '/album' &&
+                    content.artists
                         .map(artist => {
                             return artist.name;
                         })
                         .join(', ')}
-                {props.playlistContent.linkTo === '/playlist' &&
-                    props.item.owner?.display_name}
-                {props.playlistContent.linkTo === '/artist' && 'Artiste'}
+                {props.linkTo === '/playlist' && content.owner?.display_name}
+                {props.linkTo === '/artist' && 'Artiste'}
             </p>
         </>
     );
