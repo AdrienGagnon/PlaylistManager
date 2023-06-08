@@ -8,7 +8,7 @@ import TrackMainInfo from './TrackMainInfo';
 import TrackTitleAndArtist from './TrackTitleAndArtist';
 import TrackNumber from './TrackNumber';
 import DurationTrack from './DurationTrack';
-import handleSetPageContent from '../../Logic/handleSetPageContent';
+import handleSetPageContent from '../../../Logic/handleSetPageContent';
 
 function GenerateTrackList(props) {
     const currentTrack = useSelector(state => {
@@ -40,7 +40,7 @@ function GenerateTrackList(props) {
                             />
                             <TrackMainInfo item={item.track} />
                             <NavLink
-                                to={'/album'}
+                                to={'/album' + `/${item.track.album.id}`}
                                 onClick={() =>
                                     handleSetPageContent(item.track.album)
                                 }
@@ -73,6 +73,39 @@ function GenerateTrackList(props) {
                                 type={'albums'}
                             />
                             <TrackTitleAndArtist item={item} />
+                            <DurationTrack item={item} />
+                        </li>
+                    );
+                })}
+            {props.option === 'popular' &&
+                props.playlistInfo.tracks.map((item, index) => {
+                    return (
+                        <li
+                            key={item.name}
+                            className={[
+                                styles['list-item-container'],
+                                item.name === currentTrack.currentTrack?.name
+                                    ? 'active-item'
+                                    : '',
+                                styles['album-colomn-divisions'],
+                            ].join(' ')}
+                        >
+                            <TrackNumber
+                                index={index}
+                                playlistInfo={props.playlistInfo}
+                                item={item}
+                                type={'albums'}
+                            />
+                            <div className={styles['list-item-info']}>
+                                {/* TODO: add navlink here when track view is ready */}
+                                <span
+                                    className={
+                                        styles['list-item-info-track-name']
+                                    }
+                                >
+                                    {item.name}
+                                </span>
+                            </div>
                             <DurationTrack item={item} />
                         </li>
                     );

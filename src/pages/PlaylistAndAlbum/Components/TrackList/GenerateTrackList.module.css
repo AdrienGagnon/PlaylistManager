@@ -1,4 +1,4 @@
-@import url('../../Constants/Constants.css');
+@import url('../../../Constants/Constants.css');
 
 .list-item-container {
     display: grid;

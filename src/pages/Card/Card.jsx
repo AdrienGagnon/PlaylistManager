@@ -13,7 +13,7 @@ function Card(props) {
     return (
         <NavLink
             onClick={() => handleSetPageContent(content)}
-            to={props.linkTo}
+            to={props.linkTo + `/${content.id}`}
             key={content.name}
             className={[
                 styles['card'],

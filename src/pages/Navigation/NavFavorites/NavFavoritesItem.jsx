@@ -9,7 +9,7 @@ function NavFavoritesItem(props) {
             onClick={() => {
                 handleSetPageContent(props.album);
             }}
-            to={props.linkTo}
+            to={props.linkTo + `/${props.album.id}`}
             className={styles['favorites-item-container']}
         >
             <img

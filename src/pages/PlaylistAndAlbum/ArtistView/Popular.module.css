@@ -1,0 +1,11 @@
+@import url('../Components/TrackList/GenerateTrackList.css');
+@import url('../Components/TrackList/GenerateTrackList.module.css');
+@import url('../Components/TrackList/TrackTitleAndArtist.module.css');
+
+.section-name {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: start;
+    margin-bottom: 1rem;
+    padding-left: 16px;
+}

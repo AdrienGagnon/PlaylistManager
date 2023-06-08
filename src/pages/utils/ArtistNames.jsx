@@ -10,7 +10,7 @@ function ArtistNames(props) {
                 .map((artist, index) => {
                     return (
                         <NavLink
-                            to={'/artist'}
+                            to={'/artist' + `/${artist.id}`}
                             onClick={() => handleSetPageContent(artist)}
                             key={index}
                             className={styles['list-item-info-artist']}

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import handleResumeTrack from '../../Logic/handleResumeTrack';
+import handleResumeTrack from '../../../Logic/handleResumeTrack';
 import styles from './TrackNumber.module.css';
 
 function TrackNumber(props) {

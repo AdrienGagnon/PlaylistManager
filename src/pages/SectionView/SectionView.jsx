@@ -35,10 +35,12 @@ function SectionView() {
 
     function handleCardImgLoad() {}
 
-    if (!pageContent?.content)
+    if (!pageContent?.content) {
+        console.log('pas de contenu');
         return (
             <>Une erreur est survenue. Veuillez revenir au menu principal.</>
         );
+    }
 
     return (
         <>

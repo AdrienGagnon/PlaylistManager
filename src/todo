@@ -2,6 +2,7 @@ general:
 -fix shuffle not working on already playing tracks
 -fix button press too fast (play stop)
 -add profil interactions
+-add opacity only when scroll down on header
 
 playlist view: -add more than 100 tracks
 -add colomn title that follows with scroll
@@ -12,6 +13,7 @@ nav: -add expanded mode
 -add draggable nav to resize
 -remove padding bottom when no song is played
 -text green when currently playing
+-fix padding not aligning bottom with main
 
 playbar: -add sound control
 

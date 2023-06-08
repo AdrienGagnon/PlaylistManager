@@ -1,4 +1,4 @@
-import calcTrackTime from '../../utils/calcTrackTime';
+import calcTrackTime from '../../../utils/calcTrackTime';
 import styles from './DurationTrack.module.css';
 
 function DurationTrack(props) {

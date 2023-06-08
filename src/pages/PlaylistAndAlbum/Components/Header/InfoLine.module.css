@@ -1,0 +1,6 @@
+.info-playlist-other-container {
+    display: flex;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}

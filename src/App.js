@@ -8,23 +8,29 @@ import MainContent from './pages/MainContent/MainContent';
 
 import Home from './pages/HomeView/Home';
 import Search from './pages/Search/Search';
-import PlaylistView from './pages/PlaylistView/PlaylistView';
+import PlaylistView from './pages/PlaylistAndAlbum/PlaylistView/PlaylistView';
+import AlbumView from './pages/PlaylistAndAlbum/Albumview/AlbumView';
 import SectionView from './pages/SectionView/SectionView';
 import LoggingIn from './pages/LoggingIn/LoggingIn';
 import GenreView from './pages/GenreView/GenreView';
+import ErrorPage from './pages/components/ErrorPage';
+import ArtistView from './pages/PlaylistAndAlbum/ArtistView/ArtistView';
 
 const router = createBrowserRouter([
     {
         path: '/callback',
         element: <CallBack />,
+        errorElement: <ErrorPage />,
     },
     {
         path: '/',
         element: <LoggingIn />,
+        errorElement: <ErrorPage />,
     },
     {
         path: '/',
         element: <MainContent />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/Home',
@@ -35,12 +41,12 @@ const router = createBrowserRouter([
                 element: <Search />,
             },
             {
-                path: '/album',
-                element: <PlaylistView option={'album'} />,
+                path: '/album/:albumId',
+                element: <AlbumView />,
             },
             {
-                path: '/playlist',
-                element: <PlaylistView option={'playlist'} />,
+                path: '/playlist/:playlistId',
+                element: <PlaylistView />,
             },
             {
                 path: '/section',
@@ -49,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: '/genre',
                 element: <GenreView />,
+            },
+            {
+                path: '/artist/:artistId',
+                element: <ArtistView />,
             },
         ],
     },

@@ -42,7 +42,7 @@ function authentication() {
     generateCodeChallenge(codeVerifier).then(codeChallenge => {
         let state = generateRandomString(16);
         let scope =
-            'user-read-private user-read-email user-library-read user-follow-read user-read-currently-playing user-read-recently-played';
+            'user-read-private user-read-email user-library-read user-follow-read user-read-currently-playing user-read-recently-played user-follow-modify';
 
         localStorage.setItem('code_verifier', codeVerifier);
 

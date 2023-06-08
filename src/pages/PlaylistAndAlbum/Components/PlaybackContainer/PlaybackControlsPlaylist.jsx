@@ -1,20 +1,33 @@
-import styles from './PlaybackControlsPlaylist.module.css';
-
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import handleResumeTrack from '../../Logic/handleResumeTrack';
+import styles from './PlaybackControlsPlaylist.module.css';
+import handleResumeTrack from '../../../Logic/handleResumeTrack';
+import fetchWebApi from '../../../Data/fetchWebApi';
+import handleFollowArtist from '../../../Logic/handleFollowArtist';
 
 function PlaybackControlsPlaylist(props) {
+    const [followArtist, setFollowArtist] = useState();
     const pageContent = useSelector(state => {
         return state.pageContent.pageContent;
     });
-
     const currentTrack = useSelector(state => {
         return state.currentTrack;
     });
 
-    // Used for handleResumeTrack
-    const type = props.option === 'playlist' ? 'playlists' : 'albums';
+    useEffect(() => {
+        if (props.option === 'artist') {
+            getFollowStatus();
+        }
+    }, []);
+
+    async function getFollowStatus() {
+        const followStatus = await fetchWebApi(
+            `v1/me/following/contains?type=artist&ids=${props.playlistInfo.id}`,
+            'GET'
+        );
+        setFollowArtist(followStatus);
+    }
 
     return (
         <div className={styles['play-btn-container']}>
@@ -25,7 +38,13 @@ function PlaybackControlsPlaylist(props) {
                 className={styles['play-button']}
                 onClick={e => {
                     e.stopPropagation();
-                    handleResumeTrack(pageContent, 0, undefined, type);
+                    if (props.option === 'artist') return; // TODO: play the recommanded tracks
+                    handleResumeTrack(
+                        pageContent,
+                        0,
+                        undefined,
+                        props.option + 's'
+                    );
                 }}
             >
                 <span aria-hidden="true">
@@ -58,6 +77,16 @@ function PlaybackControlsPlaylist(props) {
                         )}
                 </span>
             </button>
+            {props.option === 'artist' && (
+                <button
+                    onClick={() =>
+                        handleFollowArtist(props.playlistInfo, followArtist)
+                    }
+                    className={styles['follow-btn']}
+                >
+                    {followArtist ? 'SUIVIS' : 'SUIVRE'}
+                </button>
+            )}
             <button
                 className={styles['more-options-btn']}
                 type="button"

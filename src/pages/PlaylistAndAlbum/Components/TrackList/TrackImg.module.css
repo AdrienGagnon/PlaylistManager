@@ -1,7 +1,3 @@
-.list-item-info-container {
-    display: flex;
-}
-
 .list-item-playlist-img {
     width: 40px;
     aspect-ratio: auto 40 / 40;

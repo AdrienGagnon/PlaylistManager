@@ -52,7 +52,6 @@ function HeaderPlaylist(props) {
             if (playlistTitle.current.clientHeight > titleSize.height) {
                 if (titleSize.fontSize === 0) return;
 
-                console.log('smaller', titleSize.fontSize - 1);
                 playlistTitle.current.style.fontSize =
                     fontSizeArray[titleSize.fontSize - 1];
                 setTitleSize({
@@ -88,7 +87,9 @@ function HeaderPlaylist(props) {
                         <p className={styles['info-playlist-type']}>
                             {props.option === 'album'
                                 ? 'Album'
-                                : 'Liste de lecture'}
+                                : props.option === 'playlist'
+                                ? 'Liste de lecture'
+                                : 'Artiste'}
                         </p>
                         <p
                             ref={playlistTitle}

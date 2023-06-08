@@ -1,4 +1,4 @@
-@import url('../../Constants/Constants.css');
+@import url('../../../Constants/Constants.css');
 
 .album-colomn-titles-container.colomn-titles-container {
     grid-template-columns: [index] 16px [first] 4fr [last] minmax(120px, 1fr);
