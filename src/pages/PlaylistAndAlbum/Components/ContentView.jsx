@@ -11,11 +11,24 @@ import Popular from '../ArtistView/Popular';
 function ContentView(props) {
     const [currentItemId, setCurrentItemId] = useState();
     const [contentInfo, setContentInfo] = useState();
+    const [popularContent, setPopularContent] = useState();
 
     // Important: when store is changed (href) it will trigger a rerender
     const newContent = useSelector(state => {
         return state;
     });
+
+    useEffect(() => {
+        props.option === 'artist' && contentInfo && getPopularContent();
+    }, [contentInfo]);
+
+    async function getPopularContent() {
+        const artistPopularData = await fetchWebApi(
+            `v1/artists/${contentInfo.id}/top-tracks?market=CA`,
+            'GET'
+        );
+        setPopularContent(artistPopularData);
+    }
 
     useEffect(() => {
         updateContent();
@@ -48,10 +61,14 @@ function ContentView(props) {
                     />
                     <PlaybackControlsPlaylist
                         playlistInfo={contentInfo}
+                        popularContent={popularContent}
                         option={props.option}
                     />
                     {props.option === 'artist' ? (
-                        <Popular playlistInfo={contentInfo} />
+                        <Popular
+                            playlistInfo={contentInfo}
+                            popularContent={popularContent}
+                        />
                     ) : (
                         <TrackList
                             playlistInfo={contentInfo}

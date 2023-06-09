@@ -40,6 +40,13 @@ function SoundIFrame() {
     }
 
     useEffect(() => {
+        const root = document.querySelector(':root');
+        currentTrackInfo.currentTrack
+            ? root.style.setProperty('--height-current-track-image', '300px')
+            : root.style.setProperty('--height-current-track-image', '10px');
+    }, [currentTrackInfo.currentTrack]);
+
+    useEffect(() => {
         try {
             window.onSpotifyIframeApiReady = IFrameAPI => {
                 const element = document.getElementById('embed-iframe');

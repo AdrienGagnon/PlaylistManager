@@ -5,6 +5,7 @@ import styles from './PlaybackControlsPlaylist.module.css';
 import handleResumeTrack from '../../../Logic/handleResumeTrack';
 import fetchWebApi from '../../../Data/fetchWebApi';
 import handleFollowArtist from '../../../Logic/handleFollowArtist';
+import handlePlayNewTrack from '../../../Logic/handlePlayNewTrack';
 
 function PlaybackControlsPlaylist(props) {
     const [followArtist, setFollowArtist] = useState();
@@ -38,13 +39,22 @@ function PlaybackControlsPlaylist(props) {
                 className={styles['play-button']}
                 onClick={e => {
                     e.stopPropagation();
-                    if (props.option === 'artist') return; // TODO: play the recommanded tracks
-                    handleResumeTrack(
-                        pageContent,
-                        0,
-                        undefined,
-                        props.option + 's'
-                    );
+                    if (props.option === 'artist') {
+                        //TODO: fix correct object
+                        handleResumeTrack(
+                            props.popularContent.tracks,
+                            0,
+                            undefined,
+                            'artists'
+                        );
+                    } else {
+                        handleResumeTrack(
+                            pageContent,
+                            0,
+                            undefined,
+                            props.option + 's'
+                        );
+                    }
                 }}
             >
                 <span aria-hidden="true">
