@@ -1,0 +1,39 @@
+@import url('../Components/TrackList/GenerateTrackList.css');
+@import url('../Components/TrackList/GenerateTrackList.module.css');
+@import url('../Components/TrackList/TrackTitleAndArtist.module.css');
+
+@import url('../../../Constants/Constants.css');
+
+.section-name {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: start;
+    margin-bottom: 1rem;
+    padding-left: 16px;
+}
+
+.list-item-container {
+    font-size: 1.4rem;
+}
+
+.list-item-info {
+    flex-direction: row;
+    align-items: center;
+}
+
+.show-more {
+    text-align: start;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-left: 16px;
+    margin-block: 1rem;
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+    width: fit-content;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.show-more:hover {
+    color: white;
+}

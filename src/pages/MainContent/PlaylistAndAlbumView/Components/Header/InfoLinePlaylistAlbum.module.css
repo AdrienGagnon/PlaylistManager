@@ -1,0 +1,25 @@
+.mentions-aime::before,
+.total-tracks::before,
+.artist-names::before,
+.album-title::before,
+.track-year::before,
+.track-duration::before {
+    content: '•';
+    margin: 0px 4px;
+    text-decoration: none;
+}
+
+.info-playlist-owner {
+    display: flex;
+    gap: 5px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    width: min-content;
+}
+
+.info-playlist-owner span {
+    max-width: 20ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

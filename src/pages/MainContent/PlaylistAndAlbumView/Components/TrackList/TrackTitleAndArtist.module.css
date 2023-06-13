@@ -1,0 +1,35 @@
+@import url('../../../../Constants/Constants.css');
+
+.list-item-container div,
+.list-item-info-artists-container {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    text-align: start;
+}
+
+.list-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.list-item-info-artists-container {
+    display: flex;
+}
+
+.list-item-info-artists-container p {
+    margin-right: 5px;
+}
+
+.list-item-info-track-name:hover,
+.list-item-album:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.list-item-info-track-name {
+    color: white;
+    text-decoration: none;
+}

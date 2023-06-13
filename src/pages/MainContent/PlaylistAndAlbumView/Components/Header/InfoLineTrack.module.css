@@ -1,0 +1,24 @@
+@import url('./InfoLinePlaylistAlbum.module.css');
+
+.info-track-artist-img {
+    border-radius: 50%;
+    height: 24px;
+    object-fit: contain;
+    aspect-ratio: 1;
+}
+
+.info-track-artist-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.info-track-artist-name,
+.album-title {
+    cursor: pointer;
+}
+
+.info-track-artist-name:hover,
+.album-title:hover {
+    text-decoration: underline;
+}

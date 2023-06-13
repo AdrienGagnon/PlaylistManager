@@ -1,0 +1,33 @@
+@import url('../../Constants/Constants.css');
+
+.artist-info-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2.4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.artist-info-container:hover {
+    background: rgba(var(--SPOTIFY_GREY), 0.3);
+}
+
+.artist-info-img {
+    height: 80px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+
+.artist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.artist-info-container span:first-child {
+    font-size: 1.4rem;
+}

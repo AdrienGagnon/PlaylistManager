@@ -6,15 +6,16 @@ import CallBack from './authentication/Callback';
 
 import MainContent from './pages/MainContent/MainContent';
 
-import Home from './pages/HomeView/Home';
-import Search from './pages/Search/Search';
-import PlaylistView from './pages/PlaylistAndAlbum/PlaylistView/PlaylistView';
-import AlbumView from './pages/PlaylistAndAlbum/Albumview/AlbumView';
-import SectionView from './pages/SectionView/SectionView';
+import HomeView from './pages/MainContent/HomeView/HomeView';
+import Search from './pages/MainContent/Search/Search';
+import PlaylistView from './pages/MainContent/PlaylistAndAlbumView/PlaylistView/PlaylistView';
+import AlbumView from './pages/MainContent/PlaylistAndAlbumView/Albumview/AlbumView';
+import SectionView from './pages/MainContent/SectionView/SectionView';
 import LoggingIn from './pages/LoggingIn/LoggingIn';
-import GenreView from './pages/GenreView/GenreView';
+import GenreView from './pages/MainContent/GenreView/GenreView';
 import ErrorPage from './pages/components/ErrorPage';
-import ArtistView from './pages/PlaylistAndAlbum/ArtistView/ArtistView';
+import ArtistView from './pages/MainContent/PlaylistAndAlbumView/ArtistView/ArtistView';
+import TrackView from './pages/MainContent/TrackView/Track';
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/Home',
-                element: <Home />,
+                element: <HomeView />,
             },
             {
                 path: '/search',
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: '/artist/:artistId',
                 element: <ArtistView />,
+            },
+            {
+                path: '/track/:trackId',
+                element: <TrackView />,
             },
         ],
     },

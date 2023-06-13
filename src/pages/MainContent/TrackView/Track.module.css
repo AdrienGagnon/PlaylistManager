@@ -1,0 +1,17 @@
+@import url('./TrackArtist.module.css');
+@import url('../../Constants/Constants.css');
+
+.artist-container span:first-child {
+    color: rgb(var(--SPOTIFY_LIGHT_GREY));
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.artist-container span:nth-child(2) {
+    font-size: 2rem;
+}
+
+.artist-container {
+    gap: 0.2rem;
+    margin-block: 2rem;
+}

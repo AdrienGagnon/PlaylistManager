@@ -11,6 +11,7 @@ import cardAmountReducer from './cardAmount-slice';
 import newContentReceivedReducer from './newContentReceived';
 import searchReducer from './search-slice';
 import homeContentReducer from './homeContent-slice';
+import trackArtistReducer from './trackArtist-slice';
 
 const store = configureStore({
     reducer: {
@@ -25,6 +26,7 @@ const store = configureStore({
         newContentReceived: newContentReceivedReducer,
         search: searchReducer,
         homeContent: homeContentReducer,
+        trackArtist: trackArtistReducer,
     },
 });
 
